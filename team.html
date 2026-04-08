@@ -83,41 +83,6 @@
             text-align: center;
             border: 1px solid var(--clr-border);
         }
-            .logo-overlay {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: var(--clr-primary);
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-            font-family: inherit;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-        .overlay-ceo {
-            left: 8%; top: 40%;
-            width: 38%; height: 16%;
-            font-size: 1.2rem;
-            transform: rotate(-2deg);
-        }
-        .overlay-ops-1 {
-            right: 5%; top: 22%;
-            width: 30%; height: 25%;
-            font-size: 1.4rem;
-            text-align: center;
-        }
-        .overlay-ops-2 {
-            left: 20%; top: 38%;
-            width: 25%; height: 12%;
-            font-size: 0.9rem;
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -152,7 +117,7 @@
 
     <!-- Hero Section -->
     <header class="hero" style="min-height: 40vh; padding-top: 8rem; position: relative; overflow: hidden;">
-        <div class="hero-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 26, 92, 0.8), rgba(0, 26, 92, 0.95)), url('img/hero.png') center/cover no-repeat; z-index: -1;"></div>
+        <div class="hero-bg"></div>
         
         <div class="container">
             <div class="hero-content reveal">
@@ -178,9 +143,8 @@
             <div class="team-grid">
                 <!-- CEO -->
                 <div class="team-member reveal fade-up delay-100">
-                                        <div class="team-img-wrapper">
-                        <div class="logo-overlay overlay-ceo">THAI SHIP PRO</div>
-                        <img src="img/team_ceo.png" alt="CEO - Thai Ship Pro"> alt="CEO - Thai Ship Pro">
+                    <div class="team-img-wrapper">
+                        <img src="img/team_ceo.png" alt="CEO - Thai Ship Pro">
                     </div>
                     <div class="team-info">
                         <h3>Kittipong V.</h3>
@@ -191,10 +155,8 @@
 
                 <!-- Head of Operations -->
                 <div class="team-member reveal fade-up delay-300">
-                                        <div class="team-img-wrapper">
-                        <div class="logo-overlay overlay-ops-1">THAI<br>SHIP PRO</div>
-                        <div class="logo-overlay overlay-ops-2">THAI SHIP PRO</div>
-                        <img src="img/team_operations.png" alt="Head of Operations - Thai Ship Pro"> alt="Head of Operations - Thai Ship Pro">
+                    <div class="team-img-wrapper">
+                        <img src="img/team_operations.png" alt="Head of Operations - Thai Ship Pro">
                     </div>
                     <div class="team-info">
                         <h3>Siriporn N.</h3>
