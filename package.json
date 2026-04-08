@@ -1,7 +1,7 @@
 {
-  "name": "swiftnav-logistics",
+  "name": "thai-ship-pro-logistics",
   "version": "1.0.0",
-  "description": "SwiftNav Logistics - Worldwide Freight Forwarding Platform",
+  "description": "THAI SHIP PRO LOGISTICS INC - Global Transportation Services Platform",
   "main": "server.js",
   "scripts": {
     "start": "node -r dotenv/config server.js",

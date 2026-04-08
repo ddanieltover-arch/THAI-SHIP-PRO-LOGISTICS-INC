@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Team | THAI SHIP PRO LOGISTICS INC</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .team-member {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--clr-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .team-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+        .team-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.5s ease;
+        }
+        .team-member:hover .team-img-wrapper img {
+            transform: scale(1.05);
+        }
+        .team-info {
+            padding: 2rem;
+            text-align: left;
+            border-top: 3px solid var(--clr-primary);
+        }
+        .team-info h3 {
+            color: var(--clr-secondary);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+        .team-info h4 {
+            color: var(--clr-primary);
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .team-info p {
+            color: var(--clr-text-muted);
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .global-leaders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .leader-card {
+            background: var(--clr-surface-alt);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid var(--clr-border);
+        }
+            .logo-overlay {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--clr-primary);
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            font-family: inherit;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        .overlay-ceo {
+            left: 8%; top: 40%;
+            width: 38%; height: 16%;
+            font-size: 1.2rem;
+            transform: rotate(-2deg);
+        }
+        .overlay-ops-1 {
+            right: 5%; top: 22%;
+            width: 30%; height: 25%;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+        .overlay-ops-2 {
+            left: 20%; top: 38%;
+            width: 25%; height: 12%;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+                        <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                <img src="img/logo.png" alt="THAI SHIP PRO LOGISTICS INC" style="height: 48px; width: auto; object-fit: contain;">
+                <span style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em;">Thai Ship Pro Logistics</span>
+            </a>
+            <div class="nav-links">
+                <a href="about.html">About Us</a>
+                <a href="team.html" class="active">Our Team</a>
+                <a href="services.html">Services</a>
+                <a href="index.html#track">Track Shipment</a>
+                <a href="index.html#map">Live Map</a>
+                <a href="index.html" id="nav-login-btn">Sign In</a>
+                <a href="dashboard.html" id="nav-dashboard-btn" class="hidden">Dashboard</a>
+                <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                    <path d="M4 12h16" />
+                    <path d="M4 6h16" />
+                    <path d="M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" style="min-height: 40vh; padding-top: 8rem; position: relative; overflow: hidden;">
+        <div class="hero-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 26, 92, 0.8), rgba(0, 26, 92, 0.95)), url('img/hero.png') center/cover no-repeat; z-index: -1;"></div>
+        
+        <div class="container">
+            <div class="hero-content reveal">
+                                <nav aria-label="breadcrumb" style="margin-bottom: 1rem;">
+                    <ol style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        <li><a href="index.html" style="color: #fff; text-decoration: none; transition: color 0.2s ease;">Home</a></li>
+                        <li>/</li>                        <li aria-current="page" style="color: var(--clr-primary); font-weight: 600;">Our Team</li>
+                    </ol>
+                </nav>
+                <h1>Leadership & Global Operations</h1>
+                <p>Meet the dedicated professionals leading THAI SHIP PRO LOGISTICS INC across our Thailand Head Office and international branches.</p>
+            </div>
+        </div>
+    </header>
+
+    <section style="padding: 5rem 0; background: var(--clr-surface);">
+        <div class="container">
+            <div class="section-header reveal" style="text-align: center;">
+                <h2 style="color: var(--clr-primary);">Executive Leadership</h2>
+                <p>Our core team driving innovation and logistics excellence from our Thailand Headquarters.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- CEO -->
+                <div class="team-member reveal fade-up delay-100">
+                                        <div class="team-img-wrapper">
+                        <div class="logo-overlay overlay-ceo">THAI SHIP PRO</div>
+                        <img src="img/team_ceo.png" alt="CEO - Thai Ship Pro"> alt="CEO - Thai Ship Pro">
+                    </div>
+                    <div class="team-info">
+                        <h3>Kittipong V.</h3>
+                        <h4>Chief Executive Officer</h4>
+                        <p>With over two decades of global freight forwarding experience, Kittipong leads our international operations from our Si Racha HQ. His strategic vision focuses on transparent, tech-enabled supply chains and premium customer support worldwide.</p>
+                    </div>
+                </div>
+
+                <!-- Head of Operations -->
+                <div class="team-member reveal fade-up delay-300">
+                                        <div class="team-img-wrapper">
+                        <div class="logo-overlay overlay-ops-1">THAI<br>SHIP PRO</div>
+                        <div class="logo-overlay overlay-ops-2">THAI SHIP PRO</div>
+                        <img src="img/team_operations.png" alt="Head of Operations - Thai Ship Pro"> alt="Head of Operations - Thai Ship Pro">
+                    </div>
+                    <div class="team-info">
+                        <h3>Siriporn N.</h3>
+                        <h4>Head of Global Operations</h4>
+                        <p>Siriporn orchestrates our complex air, ocean, and ground logistics networks. She ensures our 99.8% on-time delivery rate is consistently met across 50+ countries by managing partnerships and streamlining cross-border customs processes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div class="section-header reveal" style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="color: var(--clr-secondary);">International Branch Management</h2>
+                <p>Our localized experts driving success in key global markets.</p>
+            </div>
+            
+            <div class="global-leaders">
+                <div class="leader-card reveal fade-up delay-100">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🇺🇸</div>
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; color: var(--clr-secondary);">Michael T.</h3>
+                    <p style="margin: 0; color: var(--clr-primary); font-size: 0.85rem; font-weight: 600;">USA Branch Manager</p>
+                    <p style="margin: 0.5rem 0 0 0; color: var(--clr-text-muted); font-size: 0.85rem;">San Pedro, CA</p>
+                </div>
+                <div class="leader-card reveal fade-up delay-100">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🇪🇺</div>
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; color: var(--clr-secondary);">Elena M.</h3>
+                    <p style="margin: 0; color: var(--clr-primary); font-size: 0.85rem; font-weight: 600;">Europe Director</p>
+                    <p style="margin: 0.5rem 0 0 0; color: var(--clr-text-muted); font-size: 0.85rem;">Laufach, Germany</p>
+                </div>
+                <div class="leader-card reveal fade-up delay-100">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🇧🇷</div>
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; color: var(--clr-secondary);">Carlos R.</h3>
+                    <p style="margin: 0; color: var(--clr-primary); font-size: 0.85rem; font-weight: 600;">LatAm Coordinator</p>
+                    <p style="margin: 0.5rem 0 0 0; color: var(--clr-text-muted); font-size: 0.85rem;">Rio Claro, Brazil</p>
+                </div>
+                <div class="leader-card reveal fade-up delay-100">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🇦🇺</div>
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; color: var(--clr-secondary);">David S.</h3>
+                    <p style="margin: 0; color: var(--clr-primary); font-size: 0.85rem; font-weight: 600;">Oceania Manager</p>
+                    <p style="margin: 0.5rem 0 0 0; color: var(--clr-text-muted); font-size: 0.85rem;">Queensland, AUS</p>
+                </div>
+                <div class="leader-card reveal fade-up delay-100">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🇪🇬</div>
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1.1rem; color: var(--clr-secondary);">Amira K.</h3>
+                    <p style="margin: 0; color: var(--clr-primary); font-size: 0.85rem; font-weight: 600;">MENA Director</p>
+                    <p style="margin: 0.5rem 0 0 0; color: var(--clr-text-muted); font-size: 0.85rem;">Alexandria, Egypt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>Thai Ship Pro Logistics</h3>
+                <p>Worldwide trust. Available 24/7. Your care-focused partner in global supply chains.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <a href="air-freight.html">Air Freight</a>
+                <a href="ocean-freight.html">Ocean Freight</a>
+                <a href="ground-delivery.html">Ground Delivery</a>
+                <a href="warehousing.html">Warehousing</a>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
+                <a href="careers.html">Careers</a>
+                <a href="#">Sustainability</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <div style="margin-bottom: 1rem;">
+                    <p style="font-weight: 600; font-size: 0.8rem; text-transform: uppercase; color: var(--clr-primary); margin-bottom: 0.25rem;">Head Office (TH)</p>
+                    <a href="tel:+66950525908" style="font-size: 0.9rem;">📞 +66 95 052 5908</a><br>
+                    <span style="font-size: 0.8rem; color: var(--clr-text-muted);">📍 Si Racha, Chon Buri 20230</span>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <p style="font-weight: 600; font-size: 0.8rem; text-transform: uppercase; color: var(--clr-primary); margin-bottom: 0.25rem;">USA Branch</p>
+                    <a href="tel:+16018910762" style="font-size: 0.9rem;">📞 +1 (601) 891-0762</a><br>
+                    <span style="font-size: 0.8rem; color: var(--clr-text-muted);">📍 San Pedro, CA 90731</span>
+                </div>
+                <a href="mailto:info@thaisploginc.com" style="font-size: 0.9rem;">✉️ info@thaisploginc.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom"
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 2rem 0;">
+            <p style="margin: 0;">&copy; 2026 THAI SHIP PRO LOGISTICS INC. All rights reserved.</p>
+            <div style="font-size: 0.875rem;">
+                <a href="#" id="privacy-link"
+                    style="color: var(--clr-text-muted); text-decoration: none; margin-right: 1.5rem;">Privacy
+                    Policy</a>
+                <a href="#" id="terms-link" style="color: var(--clr-text-muted); text-decoration: none;">Terms of
+                    Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Sign In</h2>
+                <p>Welcome back to Thai Ship Pro</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div id="login-error" class="error-msg hidden">Invalid credentials.</div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+            </form>
+            <div class="modal-footer">
+                <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Create Account</h2>
+                <p>Join Thai Ship Pro today</p>
+            </div>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-name">Full Name</label>
+                    <input type="text" id="reg-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <div id="reg-error" class="error-msg hidden">Error registering account.</div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+            <div class="modal-footer">
+                <p>Already have an account? <a href="#" id="show-login">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+    <script src="global.js"></script>
+</body>
+
+</html>

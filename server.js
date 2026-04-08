@@ -35,7 +35,7 @@ async function geocodeLocation(q) {
             }
         }, 5000); // 5 second timeout for external API
 
-        https.get(url, { headers: { 'User-Agent': 'SwiftNavLogisticsApp/1.1' } }, (resp) => {
+        https.get(url, { headers: { 'User-Agent': 'Thai Ship ProLogisticsApp/1.1' } }, (resp) => {
             let data = '';
             resp.on('data', (chunk) => { data += chunk; });
             resp.on('end', async () => {
@@ -125,18 +125,18 @@ async function sendSMS(to, body) {
 
 // === Reusable Email Template Builder ===
 function buildEmailTemplate(headerTitle, headerSubtitle, bodyContent) {
-    const baseUrl = process.env.BASE_URL || 'https://swiftnavlog.com';
+    const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
     return `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 SwiftNav Logistics</h1>
-                <p style="color: #93c5fd; margin: 8px 0 0;">${headerSubtitle}</p>
+            <div style="background: linear-gradient(135deg, #001A5C 0%, #002880 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
+                <p style="color: #ff8080; margin: 8px 0 0;">${headerSubtitle}</p>
             </div>
             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
                 ${bodyContent}
                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
-                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #1e40af;">Contact Page</a>.<br>
-                    Thank you for choosing <strong>SwiftNav Logistics</strong>! 🚀
+                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #002880;">Contact Page</a>.<br>
+                    Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
                 </p>
             </div>
         </div>
@@ -184,13 +184,13 @@ app.post('/api/auth/register', async (req, res) => {
             }
 
             // Send welcome email with credentials and security notice
-            const baseUrl = process.env.BASE_URL || 'https://swiftnavlog.com';
+            const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
             const welcomeRegHtml = buildEmailTemplate('Welcome Aboard!', 'Your Account Has Been Created', `
                 <p style="font-size: 16px; color: #374151;">Hello <strong>${name}</strong>,</p>
-                <p style="color: #4b5563;">Welcome to <strong>SwiftNav Logistics</strong>! Your account has been successfully created. Here are your login credentials:</p>
+                <p style="color: #4b5563;">Welcome to <strong>Thai Ship Pro Logistics</strong>! Your account has been successfully created. Here are your login credentials:</p>
                 
-                <div style="background: #f0f9ff; border: 2px solid #1e3a8a; border-radius: 8px; padding: 25px; margin: 20px 0;">
-                    <h3 style="margin: 0 0 15px; color: #1e3a8a; font-size: 16px; text-align: center;">🔑 Your Login Credentials</h3>
+                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 25px; margin: 20px 0;">
+                    <h3 style="margin: 0 0 15px; color: #001A5C; font-size: 16px; text-align: center;">🔑 Your Login Credentials</h3>
                     <table style="width: 100%; border-collapse: collapse;">
                         <tr><td style="padding: 10px 0; color: #6b7280; width: 30%;">📧 Email:</td><td style="padding: 10px 0; color: #111827; font-weight: 600; font-size: 15px;">${email}</td></tr>
                         <tr><td style="padding: 10px 0; color: #6b7280;">🔒 Password:</td><td style="padding: 10px 0; color: #111827; font-weight: 600; font-size: 15px;">${password}</td></tr>
@@ -201,14 +201,14 @@ app.post('/api/auth/register', async (req, res) => {
                     <h3 style="margin: 0 0 10px; color: #991b1b; font-size: 15px;">🛡️ Security Notice</h3>
                     <ul style="margin: 0; padding-left: 18px; color: #991b1b; font-size: 14px; line-height: 1.8;">
                         <li><strong>Never share</strong> your login credentials with anyone.</li>
-                        <li>SwiftNav Logistics will <strong>never ask</strong> for your password via email, phone, or chat.</li>
+                        <li>Thai Ship Pro Logistics will <strong>never ask</strong> for your password via email, phone, or chat.</li>
                         <li>We recommend changing your password after your first login.</li>
                         <li>If you suspect unauthorized access, reset your password immediately.</li>
                     </ul>
                 </div>
 
                 <div style="text-align: center; margin: 25px 0;">
-                    <a href="${baseUrl}" style="display: inline-block; background: linear-gradient(135deg, #1e3a8a, #1e40af); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🚀 Go to Your Dashboard</a>
+                    <a href="${baseUrl}" style="display: inline-block; background: linear-gradient(135deg, #001A5C, #002880); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🚀 Go to Your Dashboard</a>
                 </div>
 
                 <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 15px; border-radius: 4px; margin: 20px 0;">
@@ -223,9 +223,9 @@ app.post('/api/auth/register', async (req, res) => {
             `);
 
             resend.emails.send({
-                from: process.env.EMAIL_FROM || 'SwiftNav Logistics <info@swiftnavlog.com>',
+                from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
                 to: email,
-                subject: '🎉 Welcome to SwiftNav Logistics — Your Account is Ready!',
+                subject: '🎉 Welcome to Thai Ship Pro Logistics — Your Account is Ready!',
                 html: welcomeRegHtml
             }).then(() => {
                 console.log(`✅ Welcome email sent to ${email}`);
@@ -279,11 +279,11 @@ app.post('/api/auth/forgot-password', (req, res) => {
 
             const resetHtml = buildEmailTemplate('Password Reset', 'Security Code Request', `
                 <p style="font-size: 16px; color: #374151;">Hello,</p>
-                <p style="color: #4b5563;">We received a request to reset the password associated with your SwiftNav Logistics account.</p>
+                <p style="color: #4b5563;">We received a request to reset the password associated with your Thai Ship Pro Logistics account.</p>
                 
-                <div style="background: #f0f9ff; border: 2px solid #1e3a8a; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center;">
+                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center;">
                     <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Your Reset Code</p>
-                    <h2 style="margin: 0; color: #1e3a8a; font-size: 36px; letter-spacing: 6px; font-weight: 700;">${code}</h2>
+                    <h2 style="margin: 0; color: #001A5C; font-size: 36px; letter-spacing: 6px; font-weight: 700;">${code}</h2>
                 </div>
 
                 <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 15px; border-radius: 4px; margin: 20px 0;">
@@ -292,9 +292,9 @@ app.post('/api/auth/forgot-password', (req, res) => {
             `);
 
             resend.emails.send({
-                from: process.env.EMAIL_FROM || 'SwiftNav Logistics <info@swiftnavlog.com>',
+                from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
                 to: email,
-                subject: '🔐 Password Reset Code - SwiftNav Logistics',
+                subject: '🔐 Password Reset Code - Thai Ship Pro Logistics',
                 html: resetHtml
             }).catch(err => console.error("Forgot PWD email error:", err));
 
@@ -518,7 +518,7 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
 
     // Generate random tracking number
     const randomHex = require('crypto').randomBytes(5).toString('hex').toUpperCase();
-    const trackingNumber = `SN${randomHex}`;
+    const trackingNumber = `TSP${randomHex}`;
     const initialStatus = 'Pending';
 
     const createShipment = async (userId) => {
@@ -562,20 +562,20 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
 
                 // Send welcome email to the receiver with tracking info
                 if (user_email) {
-                    const baseUrl = process.env.BASE_URL || 'https://swiftnavlog.com';
+                    const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
                     const welcomeHtml = `
                         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-                            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 SwiftNav Logistics</h1>
-                                <p style="color: #93c5fd; margin: 8px 0 0;">Your Shipment Has Been Created!</p>
+                            <div style="background: linear-gradient(135deg, #001A5C 0%, #002880 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
+                                <p style="color: #ff8080; margin: 8px 0 0;">Your Shipment Has Been Created!</p>
                             </div>
                             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
                                 <p style="font-size: 16px; color: #374151;">Hello <strong>${receiver_name || 'Valued Customer'}</strong>,</p>
                                 <p style="color: #4b5563;">A new shipment has been created for you. Here are your details:</p>
                                 
-                                <div style="background: #f0f9ff; border: 2px solid #1e3a8a; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
                                     <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Your Tracking Number</p>
-                                    <h2 style="margin: 0; color: #1e3a8a; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
+                                    <h2 style="margin: 0; color: #001A5C; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
                                 </div>
 
                                 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -590,7 +590,7 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                                 <div style="background: #fffbeb; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 4px; margin: 20px 0;">
                                     <h3 style="margin: 0 0 10px; color: #92400e; font-size: 15px;">📋 How to Track Your Package</h3>
                                     <ol style="margin: 0; padding-left: 18px; color: #78350f; font-size: 14px; line-height: 1.8;">
-                                        <li>Visit <a href="${baseUrl}" style="color: #1e40af; font-weight: 600;">${baseUrl}</a></li>
+                                        <li>Visit <a href="${baseUrl}" style="color: #002880; font-weight: 600;">${baseUrl}</a></li>
                                         <li>Enter your tracking number <strong>${trackingNumber}</strong> in the tracking field</li>
                                         <li>Enter this email address (<strong>${user_email}</strong>) to verify your identity</li>
                                         <li>Click <strong>"Track Shipment"</strong> to see live updates</li>
@@ -602,22 +602,22 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                                     <p style="margin: 0; color: #15803d; font-size: 14px; line-height: 1.6;">
                                         When you track your shipment for the first time, an account will be <strong>automatically created</strong> for you.
                                         You'll be redirected to your personal dashboard where you can view all your shipments, tracking history, and receive future updates.
-                                        You can also <a href="${baseUrl}" style="color: #1e40af; font-weight: 600;">sign up directly</a> on our website.
+                                        You can also <a href="${baseUrl}" style="color: #002880; font-weight: 600;">sign up directly</a> on our website.
                                     </p>
                                 </div>
 
                                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
-                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #1e40af;">Contact Page</a>.<br>
-                                    Thank you for choosing <strong>SwiftNav Logistics</strong>! 🚀
+                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #002880;">Contact Page</a>.<br>
+                                    Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
                                 </p>
                             </div>
                         </div>
                     `;
 
                     resend.emails.send({
-                        from: process.env.EMAIL_FROM || 'SwiftNav Logistics <info@swiftnavlog.com>',
+                        from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
                         to: user_email,
-                        subject: `Your Shipment ${trackingNumber} Has Been Created — SwiftNav Logistics`,
+                        subject: `Your Shipment ${trackingNumber} Has Been Created — Thai Ship Pro Logistics`,
                         html: welcomeHtml
                     }).then(() => {
                         console.log(`✅ Welcome email sent for ${trackingNumber} to ${user_email}`);
@@ -628,20 +628,20 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
 
                 // Send confirmation email to the sender
                 if (sender_email) {
-                    const baseUrl = process.env.BASE_URL || 'https://swiftnavlog.com';
+                    const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
                     const senderHtml = `
                         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-                            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 SwiftNav Logistics</h1>
-                                <p style="color: #93c5fd; margin: 8px 0 0;">Shipment Confirmation</p>
+                            <div style="background: linear-gradient(135deg, #001A5C 0%, #002880 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
+                                <p style="color: #ff8080; margin: 8px 0 0;">Shipment Confirmation</p>
                             </div>
                             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
                                 <p style="font-size: 16px; color: #374151;">Hello <strong>${sender_name || 'Valued Customer'}</strong>,</p>
                                 <p style="color: #4b5563;">Your shipment has been successfully created and is now being processed. Here is a summary of your shipment:</p>
                                 
-                                <div style="background: #f0f9ff; border: 2px solid #1e3a8a; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
                                     <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Tracking Number</p>
-                                    <h2 style="margin: 0; color: #1e3a8a; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
+                                    <h2 style="margin: 0; color: #001A5C; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
                                 </div>
 
                                 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -658,23 +658,23 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                                     <h3 style="margin: 0 0 10px; color: #92400e; font-size: 15px;">📋 Track Your Shipment</h3>
                                     <p style="margin: 0; color: #78350f; font-size: 14px; line-height: 1.6;">
                                         You can track your shipment at any time by visiting 
-                                        <a href="${baseUrl}" style="color: #1e40af; font-weight: 600;">${baseUrl}</a> 
+                                        <a href="${baseUrl}" style="color: #002880; font-weight: 600;">${baseUrl}</a> 
                                         and entering your tracking number <strong>${trackingNumber}</strong>.
                                     </p>
                                 </div>
 
                                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
-                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #1e40af;">Contact Page</a>.<br>
-                                    Thank you for choosing <strong>SwiftNav Logistics</strong>! 🚀
+                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #002880;">Contact Page</a>.<br>
+                                    Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
                                 </p>
                             </div>
                         </div>
                     `;
 
                     resend.emails.send({
-                        from: process.env.EMAIL_FROM || 'SwiftNav Logistics <info@swiftnavlog.com>',
+                        from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
                         to: sender_email,
-                        subject: `Shipment Confirmation: ${trackingNumber} — SwiftNav Logistics`,
+                        subject: `Shipment Confirmation: ${trackingNumber} — Thai Ship Pro Logistics`,
                         html: senderHtml
                     }).then(() => {
                         console.log(`✅ Sender confirmation email sent for ${trackingNumber} to ${sender_email}`);
@@ -764,7 +764,7 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
             const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`;
 
             const geocodePromise = new Promise((resolve) => {
-                https.get(url, { headers: { 'User-Agent': 'SwiftNavLogisticsApp/1.0' } }, (resp) => {
+                https.get(url, { headers: { 'User-Agent': 'Thai Ship ProLogisticsApp/1.0' } }, (resp) => {
                     let data = '';
                     resp.on('data', (chunk) => { data += chunk; });
                     resp.on('end', () => {
@@ -835,14 +835,14 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
                         try {
                             const statusColor = status_marker === 'Delivered' ? '#22c55e' : (status_marker === 'In Transit' ? '#3b82f6' : '#f59e0b');
                             const statusIcon = status_marker === 'Delivered' ? '✅' : (status_marker === 'In Transit' ? '🚚' : '📋');
-                            const updateBaseUrl = process.env.BASE_URL || 'https://swiftnavlog.com';
+                            const updateBaseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
                             const updateHtml = buildEmailTemplate('Shipment Update', `${statusIcon} ${status_marker}`, `
                             <p style="font-size: 16px; color: #374151;">Hello <strong>${shipmentInfo.user_name || 'Valued Customer'}</strong>,</p>
                             <p style="color: #4b5563;">There's a new update on your shipment:</p>
                             
-                            <div style="background: #f0f9ff; border: 2px solid #1e3a8a; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                            <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
                                 <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Tracking Number</p>
-                                <h2 style="margin: 0; color: #1e3a8a; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
+                                <h2 style="margin: 0; color: #001A5C; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
                             </div>
 
                             <div style="background: ${statusColor}15; border-left: 4px solid ${statusColor}; padding: 18px; border-radius: 4px; margin: 20px 0;">
@@ -856,11 +856,11 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
                             </table>
 
                             <div style="text-align: center; margin: 25px 0;">
-                                <a href="${updateBaseUrl}" style="display: inline-block; background: linear-gradient(135deg, #1e3a8a, #1e40af); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🔍 Track Your Shipment Live</a>
+                                <a href="${updateBaseUrl}" style="display: inline-block; background: linear-gradient(135deg, #001A5C, #002880); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🔍 Track Your Shipment Live</a>
                             </div>
                         `);
                             const info = await resend.emails.send({
-                                from: process.env.EMAIL_FROM || 'SwiftNav Logistics <info@swiftnavlog.com>',
+                                from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
                                 to: shipmentInfo.user_email,
                                 subject: `${statusIcon} Shipment Update: ${trackingNumber} — ${status_marker}`,
                                 html: updateHtml
@@ -873,11 +873,11 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
 
                     // SMS Notification
                     if (shipmentInfo && shipmentInfo.receiver_phone) {
-                        const smsBody = `📦 SwiftNav Logistics\n\nShipment ${trackingNumber} Update:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n• Time: ${current_date_time || 'N/A'}\n\n${description || ''}\n\nTrack live: ${process.env.BASE_URL || 'https://swiftnavlog.com'}`;
+                        const smsBody = `📦 Thai Ship Pro Logistics\n\nShipment ${trackingNumber} Update:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n• Time: ${current_date_time || 'N/A'}\n\n${description || ''}\n\nTrack live: ${process.env.BASE_URL || 'https://Thai Ship Prolog.com'}`;
                         sendSMS(shipmentInfo.receiver_phone, smsBody);
                     }
                     if (shipmentInfo && shipmentInfo.sender_phone && shipmentInfo.sender_phone !== shipmentInfo.receiver_phone) {
-                        const senderSmsBody = `📦 SwiftNav Logistics\n\nYour shipment ${trackingNumber} has been updated:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n\nTrack live: ${process.env.BASE_URL || 'https://swiftnavlog.com'}`;
+                        const senderSmsBody = `📦 Thai Ship Pro Logistics\n\nYour shipment ${trackingNumber} has been updated:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n\nTrack live: ${process.env.BASE_URL || 'https://Thai Ship Prolog.com'}`;
                         sendSMS(shipmentInfo.sender_phone, senderSmsBody);
                     }
                 });
@@ -962,11 +962,11 @@ app.post('/api/contact', async (req, res) => {
     const adminHtml = buildEmailTemplate('New Inquiry', 'Contact / Quote Request', `
         <p style="font-size: 16px; color: #374151;">A new contact request has been submitted:</p>
         
-        <div style="background: #f0f9ff; border: 2px solid #1e3a8a; border-radius: 8px; padding: 20px; margin: 20px 0;">
-            <h3 style="margin: 0 0 15px; color: #1e3a8a; font-size: 16px;">👤 Contact Details</h3>
+        <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0;">
+            <h3 style="margin: 0 0 15px; color: #001A5C; font-size: 16px;">👤 Contact Details</h3>
             <table style="width: 100%; border-collapse: collapse;">
                 <tr><td style="padding: 8px 0; color: #6b7280; width: 35%;">Name:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;">${name}</td></tr>
-                <tr><td style="padding: 8px 0; color: #6b7280;">Email:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;"><a href="mailto:${email}" style="color: #1e40af;">${email}</a></td></tr>
+                <tr><td style="padding: 8px 0; color: #6b7280;">Email:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;"><a href="mailto:${email}" style="color: #002880;">${email}</a></td></tr>
                 <tr><td style="padding: 8px 0; color: #6b7280;">Phone:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;">${phone || 'N/A'}</td></tr>
                 <tr><td style="padding: 8px 0; color: #6b7280;">Company:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;">${company || 'N/A'}</td></tr>
             </table>
@@ -992,7 +992,7 @@ app.post('/api/contact', async (req, res) => {
 
     const customerHtml = buildEmailTemplate('Message Received', 'We Got Your Message!', `
         <p style="font-size: 16px; color: #374151;">Hello <strong>${name}</strong>,</p>
-        <p style="color: #4b5563;">Thank you for reaching out to SwiftNav Logistics! We've received your message and our team is reviewing it.</p>
+        <p style="color: #4b5563;">Thank you for reaching out to Thai Ship Pro Logistics! We've received your message and our team is reviewing it.</p>
         
         <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 18px; border-radius: 4px; margin: 20px 0;">
             <h3 style="margin: 0 0 8px; color: #166534; font-size: 15px;">⏱️ What Happens Next?</h3>
@@ -1007,8 +1007,8 @@ app.post('/api/contact', async (req, res) => {
 
     try {
         await resend.emails.send({
-            from: process.env.EMAIL_FROM || 'SwiftNav Logistics <info@swiftnavlog.com>',
-            to: process.env.EMAIL_USER || 'info@swiftnavlog.com',
+            from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+            to: process.env.EMAIL_USER || 'info@thaisploginc.com',
             replyTo: email,
             subject: `📬 New Contact Request from ${name}`,
             html: adminHtml
@@ -1016,9 +1016,9 @@ app.post('/api/contact', async (req, res) => {
 
         // Send confirmation to the customer
         await resend.emails.send({
-            from: process.env.EMAIL_FROM || 'SwiftNav Logistics <info@swiftnavlog.com>',
+            from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
             to: email,
-            subject: '✅ We received your message — SwiftNav Logistics',
+            subject: '✅ We received your message — Thai Ship Pro Logistics',
             html: customerHtml
         });
 

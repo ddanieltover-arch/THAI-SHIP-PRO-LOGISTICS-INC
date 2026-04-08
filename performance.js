@@ -1,5 +1,5 @@
 /**
- * SwiftNav Logistics - Performance & Animation System
+ * Thai Ship Pro Logistics - Performance & Animation System
  * Handles scroll-triggered animations and media optimization.
  */
 

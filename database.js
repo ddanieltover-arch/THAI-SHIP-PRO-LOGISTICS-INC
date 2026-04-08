@@ -222,32 +222,32 @@ const initializeDatabase = async () => {
 
         // Migration: change old admin email to new info email
         try {
-            await db.query(`UPDATE Users SET email = 'info@swiftnavlog.com' WHERE email = 'admin@swiftnav.com'`);
-            await db.query(`UPDATE Users SET email = 'info@swiftnavlog.com' WHERE email = 'admin@swiftnavlog.com'`);
+            await db.query(`UPDATE Users SET email = 'info@thaisploginc.com' WHERE email = 'admin@thaisploginc.com'`);
+            await db.query(`UPDATE Users SET email = 'info@thaisploginc.com' WHERE email = 'admin@thaisploginc.com'`);
             // Also delete any leftover rows with the old email to prevent duplicate logins
-            await db.query(`DELETE FROM Users WHERE email = 'admin@swiftnav.com'`);
-            console.log('✅ Migration: updated old admin emails to info@swiftnavlog.com');
+            await db.query(`DELETE FROM Users WHERE email = 'admin@thaisploginc.com'`);
+            console.log('✅ Migration: updated old admin emails to info@thaisploginc.com');
         } catch (e) {
             console.error('Migration failed for admin email update:', e);
         }
 
         // Seed Admin (Awaited)
         await new Promise((resolve, reject) => {
-            db.get('SELECT * FROM Users WHERE email = ?', ['info@swiftnavlog.com'], async (err, user) => {
+            db.get('SELECT * FROM Users WHERE email = ?', ['info@thaisploginc.com'], async (err, user) => {
                 if (err) return reject(err);
                 if (!user) {
                     const hash = await bcrypt.hash('password123', 10);
                     db.run('INSERT INTO Users (name, email, password_hash, role) VALUES (?, ?, ?, ?)',
-                        ['System Admin', 'info@swiftnavlog.com', hash, 'admin'], (err) => {
+                        ['System Admin', 'info@thaisploginc.com', hash, 'admin'], (err) => {
                             if (err) reject(err);
                             else {
-                                console.log('✅ Admin account seeded: info@swiftnavlog.com / password123');
+                                console.log('✅ Admin account seeded: info@thaisploginc.com / password123');
                                 resolve();
                             }
                         });
                 } else {
                     if (user.role !== 'admin') {
-                        db.run('UPDATE Users SET role = ? WHERE email = ?', ['admin', 'info@swiftnavlog.com'], (err) => {
+                        db.run('UPDATE Users SET role = ? WHERE email = ?', ['admin', 'info@thaisploginc.com'], (err) => {
                             if (err) reject(err);
                             else resolve();
                         });

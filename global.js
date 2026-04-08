@@ -1,5 +1,5 @@
 /**
- * SwiftNav Logistics — Global Site Enhancements
+ * Thai Ship Pro Logistics — Global Site Enhancements
  * #2  Toast Notifications
  * #11 Smooth Page Transitions
  * #12 Dark Mode Toggle
@@ -109,7 +109,7 @@
     /* =============================================
      * #12 DARK MODE TOGGLE
      * ============================================= */
-    const DARK_KEY = 'swiftnav_dark_mode';
+    const DARK_KEY = 'Thai Ship Pro_dark_mode';
     const savedDark = localStorage.getItem(DARK_KEY) === 'true';
     if (savedDark) document.documentElement.setAttribute('data-theme', 'dark');
 

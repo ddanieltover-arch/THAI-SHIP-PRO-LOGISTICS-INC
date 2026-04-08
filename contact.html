@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwiftNav Logistics | Worldwide Freight Forwarding</title>
+    <title>THAI SHIP PRO LOGISTICS INC | Global Transportation Services</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="style.css">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -28,11 +29,11 @@
 
             0%,
             100% {
-                box-shadow: 0 0 0 0 rgba(30, 58, 138, 0.15);
+                box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.15);
             }
 
             50% {
-                box-shadow: 0 0 0 8px rgba(30, 58, 138, 0);
+                box-shadow: 0 0 0 8px rgba(204, 0, 0, 0);
             }
         }
 
@@ -43,7 +44,7 @@
 
         .info-card:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 32px rgba(30, 58, 138, 0.15) !important;
+            box-shadow: 0 12px 32px rgba(204, 0, 0, 0.15) !important;
             border-color: var(--clr-primary) !important;
         }
 
@@ -70,7 +71,7 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background: rgba(30, 58, 138, 0.08);
+            background: rgba(204, 0, 0, 0.08);
             margin-bottom: 0.85rem;
             font-size: 1.2rem;
             transition: background 0.25s, transform 0.25s;
@@ -89,7 +90,7 @@
 
         .global-card:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 32px rgba(30, 58, 138, 0.3) !important;
+            box-shadow: 0 12px 32px rgba(204, 0, 0, 0.3) !important;
         }
     </style>
 </head>
@@ -98,19 +99,13 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ship">
-                    <path d="M2.38 18c1.62-.64 3.03-1 4.62-1s3 .36 4.62 1c1.59.64 3.03 1 4.62 1s3-.36 4.62-1" />
-                    <path d="m19 12-1 3H5l-1-3" />
-                    <path d="M5 12 7 6l2-1h4l2 1 2 6" />
-                    <path d="M12 2v2" />
-                    <path d="M10 2h4" />
-                </svg>
-                SwiftNav Logistics
+                        <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                <img src="img/logo.png" alt="THAI SHIP PRO LOGISTICS INC" style="height: 48px; width: auto; object-fit: contain;">
+                <span style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em;">Thai Ship Pro Logistics</span>
             </a>
             <div class="nav-links">
                 <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
                 <a href="services.html">Services</a>
                 <a href="index.html#track">Track Shipment</a>
                 <a href="index.html#map">Live Map</a>
@@ -130,8 +125,8 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero"
-        style="min-height: 40vh; padding-top: 8rem; display: flex; align-items: center; justify-content: center;">
+    <header class="hero" style="min-height: 40vh; padding-top: 8rem; position: relative; overflow: hidden;">
+        <div class="hero-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 26, 92, 0.8), rgba(0, 26, 92, 0.95)), url('img/hero.png') center/cover no-repeat; z-index: -1;"></div>
         <div class="hero-content" style="text-align: center;">
             <h1>Contact Us & Get a Quote</h1>
             <p style="max-width: 600px; margin: 0 auto;">Have a question or looking for a custom shipping quote? Fill
@@ -140,42 +135,15 @@
         <div class="hero-bg"></div>
     </header>
 
-    <!-- Animated Contact Banner -->
     <div class="marquee-banner">
         <div class="marquee-content">
-            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24">
-                    <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg> +1 (213) 581-7933</span>
-            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24">
-                    <rect width="20" height="16" x="2" y="4" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg> info@swiftnavlog.com</span>
-            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24">
-                    <path
-                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                    <circle cx="12" cy="10" r="3" />
-                </svg> 132 S Sherbourne Dr, Los Angeles, CA 90048, USA</span>
+            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> TH Head Office: +66 95 052 5908</span>
+            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> US Branch: +1 (601) 891-0762</span>
+            <span class="marquee-item">📍 Si Racha District, Chon Buri · San Pedro, CA · Rio Claro, SP · Laufach, BY · Alexandria · Grand Secret, QLD</span>
             <!-- Duplicate for seamless loop -->
-            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24">
-                    <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg> +1 (213) 581-7933</span>
-            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24">
-                    <rect width="20" height="16" x="2" y="4" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg> info@swiftnavlog.com</span>
-            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24">
-                    <path
-                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                    <circle cx="12" cy="10" r="3" />
-                </svg> 132 S Sherbourne Dr, Los Angeles, CA 90048, USA</span>
+            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> TH Head Office: +66 95 052 5908</span>
+            <span class="marquee-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> US Branch: +1 (601) 891-0762</span>
+            <span class="marquee-item">📍 Si Racha District, Chon Buri · San Pedro, CA · Rio Claro, SP · Laufach, BY · Alexandria · Grand Secret, QLD</span>
         </div>
     </div>
 
@@ -225,38 +193,82 @@
             <!-- Contact Info Sidebar -->
             <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                 <div class="info-card"
-                    style="background: white; padding: 1.75rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--clr-border);">
-                    <div class="card-icon">📞</div>
-                    <h3 style="margin: 0 0 0.5rem; color: var(--clr-primary); font-size: 1.1rem;">Call Us</h3>
-                    <a href="tel:+12135817933"
-                        style="color: var(--clr-text); text-decoration: none; font-size: 1.05rem; font-weight: 600;">+1
-                        (213) 581-7933</a>
-                    <p style="color: var(--clr-text-muted); font-size: 0.875rem; margin: 0.5rem 0 0;">Available 24/7 for
-                        urgent shipments</p>
+                    style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--clr-border);">
+                    <div class="card-icon" style="background: var(--clr-primary); color: white;">📍</div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--clr-primary); font-size: 1.1rem;">Head Office (Thailand)</h3>
+                    <p style="color: var(--clr-text); font-size: 0.95rem; line-height: 1.5; margin: 0;">3VHQ+QPW Unnamed Road,<br>Si Racha District, Chon Buri 20230</p>
+                    <p style="color: var(--clr-text-muted); font-size: 0.8rem; margin: 0.5rem 0;">Mon - Fri: 08:00 AM - 06:00 PM</p>
+                    <a href="tel:+66950525908" style="color: var(--clr-secondary); text-decoration: none; font-weight: 600;">+66 95 052 5908</a>
                 </div>
                 <div class="info-card"
-                    style="background: white; padding: 1.75rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--clr-border);">
+                    style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--clr-border);">
+                    <div class="card-icon" style="background: var(--clr-secondary); color: white;">📍</div>
+                    <h3 style="margin: 0 0 0.5rem; color: var(--clr-primary); font-size: 1.1rem;">USA Branch</h3>
+                    <p style="color: var(--clr-text); font-size: 0.95rem; line-height: 1.5; margin: 0;">425 S. Palos Verdes St.,<br>San Pedro, CA 90731, USA</p>
+                    <p style="color: var(--clr-text-muted); font-size: 0.8rem; margin: 0.5rem 0;">Mon - Fri: 08:00 AM - 05:00 PM</p>
+                    <a href="tel:+16018910762" style="color: var(--clr-secondary); text-decoration: none; font-weight: 600;">+1 (601) 891-0762</a>
+                </div>
+                <div class="info-card"
+                    style="background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--clr-border);">
                     <div class="card-icon">✉️</div>
                     <h3 style="margin: 0 0 0.5rem; color: var(--clr-primary); font-size: 1.1rem;">Email Us</h3>
-                    <a href="mailto:info@swiftnavlog.com"
-                        style="color: var(--clr-secondary); text-decoration: none; font-size: 1rem; font-weight: 600;">info@swiftnavlog.com</a>
-                    <p style="color: var(--clr-text-muted); font-size: 0.875rem; margin: 0.5rem 0 0;">We reply within 24
-                        hours</p>
+                    <a href="mailto:info@thaisploginc.com"
+                        style="color: var(--clr-secondary); text-decoration: none; font-size: 1rem; font-weight: 600;">info@thaisploginc.com</a>
                 </div>
-                <div class="info-card"
-                    style="background: white; padding: 1.75rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--clr-border);">
-                    <div class="card-icon">📍</div>
-                    <h3 style="margin: 0 0 0.5rem; color: var(--clr-primary); font-size: 1.1rem;">Our Office</h3>
-                    <p style="color: var(--clr-text); font-size: 0.95rem; line-height: 1.6; margin: 0;">132 S Sherbourne
-                        Dr,<br>Los Angeles, CA 90048,<br>USA</p>
+            </div>
+                    
+            <div class="global-card"
+                style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary)); padding: 2.5rem; border-radius: var(--radius-lg); text-align: center; margin-top: 1.5rem;">
+                <p
+                    style="color: #fff; font-weight: 700; font-size: 1.5rem; margin: 0 0 0.5rem; letter-spacing: 0.02em;">
+                    🌍 Global Coverage</p>
+                <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; margin: 0;">50+ countries · 10,000+
+                    shipments · 24/7 support</p>
+            </div>
+        </div>
+</section>
+
+    <!-- Global Offices -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div class="section-header reveal" style="text-align: center; margin-bottom: 3rem;">
+                <h2>Our Global Presence</h2>
+                <p>Strategic locations to serve your supply chain needs worldwide.</p>
+            </div>
+            <style>
+.location-card { transition: all 0.3s ease; box-shadow: var(--shadow-sm); }
+.location-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--clr-primary) !important; }
+</style>
+            <div class="reveal fade-up" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem;">
+                <div class="location-card fade-up delay-100" style="text-align: center; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--clr-border);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇹🇭</div>
+                    <h4 style="margin: 0 0 0.5rem;">Thailand</h4>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin: 0;">Si Racha District, Chon Buri</p>
                 </div>
-                <div class="global-card"
-                    style="background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary)); padding: 1.75rem; border-radius: var(--radius-lg); text-align: center;">
-                    <p
-                        style="color: #fff; font-weight: 700; font-size: 1.05rem; margin: 0 0 0.5rem; letter-spacing: 0.02em;">
-                        🌍 Global Coverage</p>
-                    <p style="color: rgba(255,255,255,0.85); font-size: 0.875rem; margin: 0;">50+ countries · 10,000+
-                        shipments · 24/7 support</p>
+                <div class="location-card fade-up delay-100" style="text-align: center; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--clr-border);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇺🇸</div>
+                    <h4 style="margin: 0 0 0.5rem;">USA</h4>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin: 0;">San Pedro, California</p>
+                </div>
+                <div class="location-card fade-up delay-100" style="text-align: center; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--clr-border);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇧🇷</div>
+                    <h4 style="margin: 0 0 0.5rem;">Brazil</h4>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin: 0;">Rio Claro, São Paulo</p>
+                </div>
+                <div class="location-card fade-up delay-100" style="text-align: center; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--clr-border);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇩🇪</div>
+                    <h4 style="margin: 0 0 0.5rem;">Germany</h4>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin: 0;">Laufach, Freistaat Bayern</p>
+                </div>
+                <div class="location-card fade-up delay-100" style="text-align: center; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--clr-border);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇪🇬</div>
+                    <h4 style="margin: 0 0 0.5rem;">Egypt</h4>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin: 0;">Attarin, Down Town, Alexandria</p>
+                </div>
+                <div class="location-card fade-up delay-100" style="text-align: center; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--clr-border);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇦🇺</div>
+                    <h4 style="margin: 0 0 0.5rem;">Australia</h4>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin: 0;">Grand Secret, Queensland</p>
                 </div>
             </div>
         </div>
@@ -266,7 +278,7 @@
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <h3>SwiftNav Logistics</h3>
+                <h3>Thai Ship Pro Logistics</h3>
                 <p>Worldwide trust. Available 24/7. Your care-focused partner in global supply chains.</p>
             </div>
             <div class="footer-links">
@@ -279,21 +291,29 @@
             <div class="footer-links">
                 <h4>Company</h4>
                 <a href="about.html">About Us</a>
+                <a href="team.html">Our Team</a>
                 <a href="careers.html">Careers</a>
                 <a href="#">Sustainability</a>
                 <a href="contact.html">Contact</a>
             </div>
-            <div class="footer-links">
+                        <div class="footer-links">
                 <h4>Contact Us</h4>
-                <a href="tel:+12135817933">📞 +1 (213) 581-7933</a>
-                <a href="mailto:info@swiftnavlog.com">✉️ info@swiftnavlog.com</a>
-                <span style="font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.5;">📍 132 S Sherbourne
-                    Dr,<br>Los Angeles, CA 90048, USA</span>
+                <div style="margin-bottom: 1rem;">
+                    <p style="font-weight: 600; font-size: 0.8rem; text-transform: uppercase; color: var(--clr-primary); margin-bottom: 0.25rem;">Head Office (TH)</p>
+                    <a href="tel:+66950525908" style="font-size: 0.9rem;">📞 +66 95 052 5908</a><br>
+                    <span style="font-size: 0.8rem; color: var(--clr-text-muted);">📍 Si Racha, Chon Buri 20230</span>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <p style="font-weight: 600; font-size: 0.8rem; text-transform: uppercase; color: var(--clr-primary); margin-bottom: 0.25rem;">USA Branch</p>
+                    <a href="tel:+16018910762" style="font-size: 0.9rem;">📞 +1 (601) 891-0762</a><br>
+                    <span style="font-size: 0.8rem; color: var(--clr-text-muted);">📍 San Pedro, CA 90731</span>
+                </div>
+                <a href="mailto:info@thaisploginc.com" style="font-size: 0.9rem;">✉️ info@thaisploginc.com</a>
             </div>
         </div>
         <div class="footer-bottom"
             style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 2rem 0;">
-            <p style="margin: 0;">&copy; 2026 SwiftNav Logistics. All rights reserved.</p>
+            <p style="margin: 0;">&copy; 2026 THAI SHIP PRO LOGISTICS INC. All rights reserved.</p>
             <div style="font-size: 0.875rem;">
                 <a href="#" id="privacy-link"
                     style="color: var(--clr-text-muted); text-decoration: none; margin-right: 1.5rem;">Privacy
@@ -310,7 +330,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Sign In</h2>
-                <p>Welcome back to SwiftNav</p>
+                <p>Welcome back to Thai Ship Pro</p>
             </div>
             <form id="login-form">
                 <div class="form-group">
@@ -336,7 +356,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Create Account</h2>
-                <p>Join SwiftNav today</p>
+                <p>Join Thai Ship Pro today</p>
             </div>
             <form id="register-form">
                 <div class="form-group">
@@ -372,7 +392,7 @@
                 <p>Last Updated: March 2026</p>
             </div>
             <div class="modal-body" style="max-height: 60vh; overflow-y: auto; padding: 0 1rem 1rem; line-height: 1.6;">
-                <p>At SwiftNav Logistics, we take your privacy seriously. This policy describes how we collect, use, and
+                <p>At THAI SHIP PRO LOGISTICS INC, we take your privacy seriously. This policy describes how we collect, use, and
                     handle your data.</p>
                 <h4 style="margin-top: 1.5rem;">1. Data Collection</h4>
                 <p>We collect information necessary to provide logistics services, including names, contact details, and
@@ -398,9 +418,9 @@
                 <p>Effective Date: March 2026</p>
             </div>
             <div class="modal-body" style="max-height: 60vh; overflow-y: auto; padding: 0 1rem 1rem; line-height: 1.6;">
-                <p>By using SwiftNav Logistics services, you agree to the following terms.</p>
+                <p>By using THAI SHIP PRO LOGISTICS INC services, you agree to the following terms.</p>
                 <h4 style="margin-top: 1.5rem;">1. Service Agreement</h4>
-                <p>SwiftNav Logistics acts as a freight forwarder. We facilitate the transport of goods but are not the
+                <p>THAI SHIP PRO LOGISTICS INC acts as a freight forwarder. We facilitate the transport of goods but are not the
                     primary carrier unless specified.</p>
                 <h4 style="margin-top: 1.5rem;">2. Liability</h4>
                 <p>Liability for loss or damage is limited according to international conventions (e.g., Warsaw, CMR)
@@ -511,18 +531,7 @@
         window.addEventListener('resize', adjustContactForm);
     </script>
     <script src="global.js"></script>
-    <!-- Smartsupp Live Chat -->
-    <script type="text/javascript">
-        var _smartsupp = _smartsupp || {};
-        _smartsupp.key = '768cc691e9bb59a17b0d2c21c3c7ec2ed585dabb';
-        window.smartsupp || (function (d) {
-            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
-            s = d.createElement('script'); c = d.getElementsByTagName('script')[0];
-            s.async = true; s.type = 'text/javascript'; s.charset = 'utf-8';
-            s.src = 'https://www.smartsuppchat.com/loader.js?';
-            c.parentNode.insertBefore(s, c);
-        })(document);
-    </script>
+    
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // === Navbar Scroll Effect ===
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
@@ -42,8 +42,8 @@
     const closeModals = document.querySelectorAll('.close-modal');
 
     // Check if user is logged in
-    const token = localStorage.getItem('swiftnav_token');
-    const userRole = localStorage.getItem('swiftnav_role');
+    const token = localStorage.getItem('Thai Ship Pro_token');
+    const userRole = localStorage.getItem('Thai Ship Pro_role');
     if (token) {
         loginBtn.classList.add('hidden');
         dashboardBtn.classList.remove('hidden');
@@ -118,8 +118,8 @@
             const data = await res.json();
 
             if (res.ok) {
-                localStorage.setItem('swiftnav_token', data.token);
-                localStorage.setItem('swiftnav_role', data.user.role);
+                localStorage.setItem('Thai Ship Pro_token', data.token);
+                localStorage.setItem('Thai Ship Pro_role', data.user.role);
                 window.location.href = data.user.role === 'admin' ? 'admin.html' : 'dashboard.html';
             } else {
                 errorMsg.textContent = data.message + (data.detail ? `: ${data.detail}` : '');
@@ -155,8 +155,8 @@
                     body: JSON.stringify({ email, password })
                 });
                 const loginData = await loginRes.json();
-                localStorage.setItem('swiftnav_token', loginData.token);
-                localStorage.setItem('swiftnav_role', loginData.user.role);
+                localStorage.setItem('Thai Ship Pro_token', loginData.token);
+                localStorage.setItem('Thai Ship Pro_role', loginData.user.role);
                 window.location.href = 'dashboard.html';
             } else {
                 errorMsg.textContent = data.message + (data.detail ? `: ${data.detail}` : '');
@@ -242,7 +242,7 @@
 
         if (trackingNum && email) {
             // Disable button to prevent double-click
-            if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '🔍 Searching...'; }
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '?? Searching...'; }
 
             trackingDetailSection.classList.remove('hidden');
             trackingNumberDisplay.innerHTML = `<div class="skeleton" style="height: 28px; width: 220px; border-radius: 4px;"></div>`;
@@ -273,8 +273,8 @@
                 const data = await res.json();
 
                 if (res.ok) {
-                    localStorage.setItem('swiftnav_token', data.token);
-                    localStorage.setItem('swiftnav_role', data.user.role);
+                    localStorage.setItem('Thai Ship Pro_token', data.token);
+                    localStorage.setItem('Thai Ship Pro_role', data.user.role);
                     window.location.href = 'dashboard.html';
                 } else {
                     trackingDetailSection.classList.remove('hidden');
@@ -282,13 +282,13 @@
                     trackingNumberDisplay.textContent = 'Not Found';
                     timelineContainer.innerHTML = `<p style="text-align:center; color:#ef4444; padding: 2rem;">${data.message || 'Please check the tracking number and email.'}</p>`;
                     if (summaryBox) summaryBox.classList.add('hidden');
-                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = '🔍 Track & View Dashboard'; }
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = '?? Track & View Dashboard'; }
                 }
             } catch (err) {
                 trackingNumberDisplay.textContent = 'Error Fetching Data';
                 timelineContainer.innerHTML = `<p style="text-align:center; color:#ef4444; padding: 2rem;">Could not connect to tracking server. Please try again later.</p>`;
                 if (summaryBox) summaryBox.classList.add('hidden');
-                if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = '🔍 Track & View Dashboard'; }
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = '?? Track & View Dashboard'; }
             }
         }
     });
@@ -316,7 +316,7 @@
     // Custom Icon (using a simple SVG marker for nice branding)
     const customIcon = L.divIcon({
         className: 'custom-map-marker',
-        html: `<div style="background-color: #f97316; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(249, 115, 22, 0.6);"></div>`,
+        html: `<div style="background-color: #CC0000; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(204, 0, 0, 0.6);"></div>`,
         iconSize: [20, 20],
         iconAnchor: [10, 10]
     });
@@ -344,7 +344,7 @@
     ];
 
     L.polyline(routeCoords, {
-        color: '#1e3a8a',
+        color: '#001A5C',
         weight: 3,
         opacity: 0.6,
         dashArray: '10, 10' // Dashed line for a route effect
