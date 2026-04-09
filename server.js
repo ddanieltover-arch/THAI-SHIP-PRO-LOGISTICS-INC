@@ -152,14 +152,14 @@ function buildEmailTemplate(headerTitle, headerSubtitle, bodyContent) {
     const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
     return `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-            <div style="background: linear-gradient(135deg, #001A5C 0%, #002880 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+            <div style="background: linear-gradient(135deg, #CC0000 0%, #A30000 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
-                <p style="color: #ff8080; margin: 8px 0 0;">${headerSubtitle}</p>
+                <p style="color: #ffebeb; margin: 8px 0 0;">${headerSubtitle}</p>
             </div>
             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
                 ${bodyContent}
                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
-                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #002880;">Contact Page</a>.<br>
+                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #CC0000;">Contact Page</a>.<br>
                     Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
                 </p>
             </div>
@@ -213,8 +213,8 @@ app.post('/api/auth/register', async (req, res) => {
                 <p style="font-size: 16px; color: #374151;">Hello <strong>${name}</strong>,</p>
                 <p style="color: #4b5563;">Welcome to <strong>Thai Ship Pro Logistics</strong>! Your account has been successfully created. Here are your login credentials:</p>
                 
-                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 25px; margin: 20px 0;">
-                    <h3 style="margin: 0 0 15px; color: #001A5C; font-size: 16px; text-align: center;">🔑 Your Login Credentials</h3>
+                <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 25px; margin: 20px 0;">
+                    <h3 style="margin: 0 0 15px; color: #CC0000; font-size: 16px; text-align: center;">🔑 Your Login Credentials</h3>
                     <table style="width: 100%; border-collapse: collapse;">
                         <tr><td style="padding: 10px 0; color: #6b7280; width: 30%;">📧 Email:</td><td style="padding: 10px 0; color: #111827; font-weight: 600; font-size: 15px;">${email}</td></tr>
                         <tr><td style="padding: 10px 0; color: #6b7280;">🔒 Password:</td><td style="padding: 10px 0; color: #111827; font-weight: 600; font-size: 15px;">${password}</td></tr>
@@ -222,7 +222,7 @@ app.post('/api/auth/register', async (req, res) => {
                 </div>
 
                 <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 18px; border-radius: 4px; margin: 20px 0;">
-                    <h3 style="margin: 0 0 10px; color: #991b1b; font-size: 15px;">🛡️ Security Notice</h3>
+                    <h3 style="margin: 0 0 10px; color: #CC0000; font-size: 15px;">🛡️ Security Notice</h3>
                     <ul style="margin: 0; padding-left: 18px; color: #991b1b; font-size: 14px; line-height: 1.8;">
                         <li><strong>Never share</strong> your login credentials with anyone.</li>
                         <li>Thai Ship Pro Logistics will <strong>never ask</strong> for your password via email, phone, or chat.</li>
@@ -232,7 +232,7 @@ app.post('/api/auth/register', async (req, res) => {
                 </div>
 
                 <div style="text-align: center; margin: 25px 0;">
-                    <a href="${baseUrl}" style="display: inline-block; background: linear-gradient(135deg, #001A5C, #002880); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🚀 Go to Your Dashboard</a>
+                    <a href="${baseUrl}" style="display: inline-block; background: linear-gradient(135deg, #CC0000, #A30000); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🚀 Go to Your Dashboard</a>
                 </div>
 
                 <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 15px; border-radius: 4px; margin: 20px 0;">
@@ -305,9 +305,9 @@ app.post('/api/auth/forgot-password', (req, res) => {
                 <p style="font-size: 16px; color: #374151;">Hello,</p>
                 <p style="color: #4b5563;">We received a request to reset the password associated with your Thai Ship Pro Logistics account.</p>
                 
-                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center;">
+                <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center;">
                     <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Your Reset Code</p>
-                    <h2 style="margin: 0; color: #001A5C; font-size: 36px; letter-spacing: 6px; font-weight: 700;">${code}</h2>
+                    <h2 style="margin: 0; color: #CC0000; font-size: 36px; letter-spacing: 6px; font-weight: 700;">${code}</h2>
                 </div>
 
                 <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 15px; border-radius: 4px; margin: 20px 0;">
@@ -589,17 +589,17 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                     const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
                     const welcomeHtml = `
                         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-                            <div style="background: linear-gradient(135deg, #001A5C 0%, #002880 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="background: linear-gradient(135deg, #CC0000 0%, #A30000 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
                                 <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
-                                <p style="color: #ff8080; margin: 8px 0 0;">Your Shipment Has Been Created!</p>
+                                <p style="color: #ffebeb; margin: 8px 0 0;">Your Shipment Has Been Created!</p>
                             </div>
                             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
                                 <p style="font-size: 16px; color: #374151;">Hello <strong>${receiver_name || 'Valued Customer'}</strong>,</p>
                                 <p style="color: #4b5563;">A new shipment has been created for you. Here are your details:</p>
                                 
-                                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                                <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
                                     <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Your Tracking Number</p>
-                                    <h2 style="margin: 0; color: #001A5C; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
+                                    <h2 style="margin: 0; color: #CC0000; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
                                 </div>
 
                                 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -614,7 +614,7 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                                 <div style="background: #fffbeb; border-left: 4px solid #f59e0b; padding: 15px; border-radius: 4px; margin: 20px 0;">
                                     <h3 style="margin: 0 0 10px; color: #92400e; font-size: 15px;">📋 How to Track Your Package</h3>
                                     <ol style="margin: 0; padding-left: 18px; color: #78350f; font-size: 14px; line-height: 1.8;">
-                                        <li>Visit <a href="${baseUrl}" style="color: #002880; font-weight: 600;">${baseUrl}</a></li>
+                                        <li>Visit <a href="${baseUrl}" style="color: #CC0000; font-weight: 600;">${baseUrl}</a></li>
                                         <li>Enter your tracking number <strong>${trackingNumber}</strong> in the tracking field</li>
                                         <li>Enter this email address (<strong>${user_email}</strong>) to verify your identity</li>
                                         <li>Click <strong>"Track Shipment"</strong> to see live updates</li>
@@ -626,12 +626,12 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                                     <p style="margin: 0; color: #15803d; font-size: 14px; line-height: 1.6;">
                                         When you track your shipment for the first time, an account will be <strong>automatically created</strong> for you.
                                         You'll be redirected to your personal dashboard where you can view all your shipments, tracking history, and receive future updates.
-                                        You can also <a href="${baseUrl}" style="color: #002880; font-weight: 600;">sign up directly</a> on our website.
+                                        You can also <a href="${baseUrl}" style="color: #CC0000; font-weight: 600;">sign up directly</a> on our website.
                                     </p>
                                 </div>
 
                                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
-                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #002880;">Contact Page</a>.<br>
+                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #CC0000;">Contact Page</a>.<br>
                                     Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
                                 </p>
                             </div>
@@ -655,17 +655,17 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                     const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
                     const senderHtml = `
                         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
-                            <div style="background: linear-gradient(135deg, #001A5C 0%, #002880 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="background: linear-gradient(135deg, #CC0000 0%, #A30000 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
                                 <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
-                                <p style="color: #ff8080; margin: 8px 0 0;">Shipment Confirmation</p>
+                                <p style="color: #ffebeb; margin: 8px 0 0;">Shipment Confirmation</p>
                             </div>
                             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
                                 <p style="font-size: 16px; color: #374151;">Hello <strong>${sender_name || 'Valued Customer'}</strong>,</p>
                                 <p style="color: #4b5563;">Your shipment has been successfully created and is now being processed. Here is a summary of your shipment:</p>
                                 
-                                <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                                <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
                                     <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Tracking Number</p>
-                                    <h2 style="margin: 0; color: #001A5C; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
+                                    <h2 style="margin: 0; color: #CC0000; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
                                 </div>
 
                                 <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -682,13 +682,13 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
                                     <h3 style="margin: 0 0 10px; color: #92400e; font-size: 15px;">📋 Track Your Shipment</h3>
                                     <p style="margin: 0; color: #78350f; font-size: 14px; line-height: 1.6;">
                                         You can track your shipment at any time by visiting 
-                                        <a href="${baseUrl}" style="color: #002880; font-weight: 600;">${baseUrl}</a> 
+                                        <a href="${baseUrl}" style="color: #CC0000; font-weight: 600;">${baseUrl}</a> 
                                         and entering your tracking number <strong>${trackingNumber}</strong>.
                                     </p>
                                 </div>
 
                                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
-                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #002880;">Contact Page</a>.<br>
+                                    If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #CC0000;">Contact Page</a>.<br>
                                     Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
                                 </p>
                             </div>
@@ -864,9 +864,9 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
                             <p style="font-size: 16px; color: #374151;">Hello <strong>${shipmentInfo.user_name || 'Valued Customer'}</strong>,</p>
                             <p style="color: #4b5563;">There's a new update on your shipment:</p>
                             
-                            <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                            <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
                                 <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Tracking Number</p>
-                                <h2 style="margin: 0; color: #001A5C; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
+                                <h2 style="margin: 0; color: #CC0000; font-size: 28px; letter-spacing: 2px;">${trackingNumber}</h2>
                             </div>
 
                             <div style="background: ${statusColor}15; border-left: 4px solid ${statusColor}; padding: 18px; border-radius: 4px; margin: 20px 0;">
@@ -880,7 +880,7 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
                             </table>
 
                             <div style="text-align: center; margin: 25px 0;">
-                                <a href="${updateBaseUrl}" style="display: inline-block; background: linear-gradient(135deg, #001A5C, #002880); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🔍 Track Your Shipment Live</a>
+                                <a href="${updateBaseUrl}" style="display: inline-block; background: linear-gradient(135deg, #CC0000, #A30000); color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 8px; font-weight: 600; font-size: 15px;">🔍 Track Your Shipment Live</a>
                             </div>
                         `);
                             const info = await resend.emails.send({
@@ -986,11 +986,11 @@ app.post('/api/contact', async (req, res) => {
     const adminHtml = buildEmailTemplate('New Inquiry', 'Contact / Quote Request', `
         <p style="font-size: 16px; color: #374151;">A new contact request has been submitted:</p>
         
-        <div style="background: #f0f9ff; border: 2px solid #001A5C; border-radius: 8px; padding: 20px; margin: 20px 0;">
-            <h3 style="margin: 0 0 15px; color: #001A5C; font-size: 16px;">👤 Contact Details</h3>
+        <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 20px; margin: 20px 0;">
+            <h3 style="margin: 0 0 15px; color: #CC0000; font-size: 16px;">👤 Contact Details</h3>
             <table style="width: 100%; border-collapse: collapse;">
                 <tr><td style="padding: 8px 0; color: #6b7280; width: 35%;">Name:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;">${name}</td></tr>
-                <tr><td style="padding: 8px 0; color: #6b7280;">Email:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;"><a href="mailto:${email}" style="color: #002880;">${email}</a></td></tr>
+                <tr><td style="padding: 8px 0; color: #6b7280;">Email:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;"><a href="mailto:${email}" style="color: #CC0000;">${email}</a></td></tr>
                 <tr><td style="padding: 8px 0; color: #6b7280;">Phone:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;">${phone || 'N/A'}</td></tr>
                 <tr><td style="padding: 8px 0; color: #6b7280;">Company:</td><td style="padding: 8px 0; color: #111827; font-weight: 600;">${company || 'N/A'}</td></tr>
             </table>
