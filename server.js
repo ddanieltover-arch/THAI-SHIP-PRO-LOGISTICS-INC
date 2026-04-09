@@ -11,6 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_dev_key';
 
+console.log('🚀 Server version 1.0.2 - Fixed Map Visibility & Markers');
+
 app.use(cors());
 app.use(express.json());
 
