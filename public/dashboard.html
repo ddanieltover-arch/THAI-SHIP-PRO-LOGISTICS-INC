@@ -421,19 +421,31 @@
                     data.events.forEach((event, i) => {
                         const isLast = i === data.events.length - 1;
                         let statusClass = (isLast && event.status_marker !== 'Delivered') ? 'active' : 'completed';
+                        
+                        // Robust date formatting
+                        let displayDate = 'N/A';
+                        try {
+                            const dateVal = event.timestamp || event.current_date_time;
+                            if (dateVal) {
+                                const d = new Date(dateVal);
+                                if (!isNaN(d.getTime())) {
+                                    displayDate = d.toLocaleString();
+                                }
+                            }
+                        } catch (e) { console.warn('Date parsing error for event:', event); }
 
                         htmlEvents.push(`
                             <div class="timeline-item ${statusClass}" style="margin-bottom: 1.5rem; position:relative; padding-left: 2rem; border-left: 2px solid ${statusClass === 'active' ? 'var(--clr-primary)' : 'var(--clr-border)'}">
                                 <div style="position:absolute; left:-6px; top:0; width:10px; height:10px; border-radius:50%; background:${statusClass === 'active' ? 'var(--clr-primary)' : 'var(--clr-border)'}"></div>
                                 <h4 style="margin:0; font-size:1rem; color:var(--clr-text);">${event.status_marker}</h4>
-                                <p style="margin:0.25rem 0; font-size:0.875rem; color:var(--clr-text-muted);">${event.location} - ${event.description}</p>
-                                <span style="font-size:0.75rem; color:var(--clr-text-muted);">${new Date(event.timestamp).toLocaleString()}</span>
+                                <p style="margin:0.25rem 0; font-size:0.875rem; color:var(--clr-text-muted);">${event.location || 'Location Pending'} - ${event.description || ''}</p>
+                                <span style="font-size:0.75rem; color:var(--clr-text-muted);">${displayDate}</span>
                             </div>
                         `);
 
                         // Use pre-geocoded coordinates if available
-                        if (event.lat && event.lng) {
-                            const coords = [event.lat, event.lng];
+                        if (event.lat !== null && event.lng !== null && !isNaN(parseFloat(event.lat)) && !isNaN(parseFloat(event.lng))) {
+                            const coords = [parseFloat(event.lat), parseFloat(event.lng)];
                             routeCoords.push(coords);
 
                             if (i === 0) {
@@ -461,13 +473,17 @@
                         }).addTo(map);
                     }
 
-                    // --- Animation Implementation ---
-                    const startLat = s.anim_start_lat || s.current_lat;
-                    const startLng = s.anim_start_lng || s.current_lng;
-                    const targetLat = s.anim_target_lat || s.current_lat;
-                    const targetLng = s.anim_target_lng || s.current_lng;
-                    const startTime = new Date(s.anim_start_time || s.created_at).getTime();
-                    const targetTime = new Date(s.anim_target_time || s.created_at).getTime();
+                    // --- Animation Implementation (Defensive) ---
+                    const startLat = parseFloat(s.anim_start_lat || s.current_lat || 0);
+                    const startLng = parseFloat(s.anim_start_lng || s.current_lng || 0);
+                    const targetLat = parseFloat(s.anim_target_lat || s.current_lat || 0);
+                    const targetLng = parseFloat(s.anim_target_lng || s.current_lng || 0);
+                    
+                    const startTimeRaw = new Date(s.anim_start_time || s.created_at || Date.now()).getTime();
+                    const targetTimeRaw = new Date(s.anim_target_time || s.created_at || Date.now()).getTime();
+                    
+                    const startTime = isNaN(startTimeRaw) ? Date.now() : startTimeRaw;
+                    const targetTime = isNaN(targetTimeRaw) ? Date.now() : targetTimeRaw;
 
                     const customIcon = L.divIcon({
                         className: 'custom-map-marker',
@@ -490,7 +506,9 @@
                         const currentLat = startLat + (targetLat - startLat) * progress;
                         const currentLng = startLng + (targetLng - startLng) * progress;
 
-                        mapMarker.setLatLng([currentLat, currentLng]);
+                        if (!isNaN(currentLat) && !isNaN(currentLng)) {
+                            mapMarker.setLatLng([currentLat, currentLng]);
+                        }
 
                         if (progress < 1) {
                             animationFrameId = requestAnimationFrame(animateMarker);
@@ -501,12 +519,19 @@
 
                     animateMarker();
 
-                    // Map fit bounds
-                    const group = new L.featureGroup([mapMarker, ...historicalMarkers]);
-                    if (mapPolyline) group.addLayer(mapPolyline);
-                    setTimeout(() => {
-                        map.fitBounds(group.getBounds(), { padding: [50, 50], maxZoom: 12 });
-                    }, 500);
+                    // Map fit bounds (Defensive)
+                    const markersToFit = [...historicalMarkers];
+                    if (mapMarker) markersToFit.push(mapMarker);
+                    
+                    if (markersToFit.length > 0) {
+                        const group = new L.featureGroup(markersToFit);
+                        if (mapPolyline) group.addLayer(mapPolyline);
+                        setTimeout(() => {
+                            try {
+                                map.fitBounds(group.getBounds(), { padding: [50, 50], maxZoom: 12 });
+                            } catch (e) { console.warn('fitBounds failed:', e); }
+                        }, 500);
+                    }
 
                 } else {
                     timeline.innerHTML = '<p>No history available.</p>';
