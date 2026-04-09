@@ -1,12 +1,12 @@
 const { Pool } = require('pg');
-const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
 
 const dbURL = process.env.DATABASE_URL;
 // Force PostgreSQL in production; default to SQLite only for local development.
-const isProd = process.env.NODE_ENV === 'production';
+// Detect production via NODE_ENV or the presence of DATABASE_URL (Vercel sets DATABASE_URL but may not set NODE_ENV)
+const isProd = process.env.NODE_ENV === 'production' || !!dbURL;
 const isLocal = !isProd;
 
 // Log for debugging
@@ -88,6 +88,7 @@ if (isProd) {
     };
 } else {
     console.log('🏠 Using SQLite (Local Development Mode)');
+    const sqlite3 = require('sqlite3').verbose();
     const dbPath = path.join(__dirname, 'database.sqlite');
     const sqliteDb = new sqlite3.Database(dbPath);
 
