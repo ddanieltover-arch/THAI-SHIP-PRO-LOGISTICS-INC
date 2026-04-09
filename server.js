@@ -19,6 +19,23 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Middleware to handle clean URLs (e.g., /admin -> admin.html)
+app.get('/:page', (req, res, next) => {
+    const page = req.params.page;
+    // Skip if it looks like a file with an extension or an API route
+    if (page.includes('.') || page.startsWith('api')) {
+        return next();
+    }
+    
+    const filePath = path.join(__dirname, 'public', `${page}.html`);
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            // If file not found, let it fall through to static or 404
+            next();
+        }
+    });
+});
+
 app.use(express.static(path.join(__dirname, 'public'))); // Serve frontend assets from public/ folder
 
 // === Keep-Alive / Health Endpoint ===
