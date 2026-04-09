@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Thai Ship Pro Logistics</title>
-    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="icon" type="image/png" href="/img/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -787,7 +787,7 @@
     <!-- Top Navigation -->
     <nav class="admin-topnav">
                     <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                <img src="img/logo.png" alt="THAI SHIP PRO LOGISTICS INC" style="height: 48px; width: auto; object-fit: contain;">
+                <img src="/img/logo.png" alt="THAI SHIP PRO LOGISTICS INC" style="height: 48px; width: auto; object-fit: contain;">
                 <span style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em;">Thai Ship Pro Logistics</span>
             </a>
         <div class="nav-tabs">
@@ -1199,8 +1199,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            const token = localStorage.getItem('tsp_token');
-            const role = localStorage.getItem('tsp_role');
+            const token = localStorage.getItem('thaisppro_token');
+            const role = localStorage.getItem('thaisppro_role');
             if (!token || role !== 'admin') { window.location.href = 'index.html'; return; }
 
             document.getElementById('logout-btn').addEventListener('click', () => { localStorage.clear(); window.location.href = 'index.html'; });

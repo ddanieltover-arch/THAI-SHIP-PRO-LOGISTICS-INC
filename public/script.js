@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModals = document.querySelectorAll('.close-modal');
 
     // Check if user is logged in
-    const token = localStorage.getItem('Thai Ship Pro_token');
-    const userRole = localStorage.getItem('Thai Ship Pro_role');
+    const token = localStorage.getItem('thaisppro_token');
+    const userRole = localStorage.getItem('thaisppro_role');
     if (token) {
         loginBtn.classList.add('hidden');
         dashboardBtn.classList.remove('hidden');
@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await res.json();
 
             if (res.ok) {
-                localStorage.setItem('Thai Ship Pro_token', data.token);
-                localStorage.setItem('Thai Ship Pro_role', data.user.role);
+                localStorage.setItem('thaisppro_token', data.token);
+                localStorage.setItem('thaisppro_role', data.user.role);
                 window.location.href = data.user.role === 'admin' ? 'admin.html' : 'dashboard.html';
             } else {
                 errorMsg.textContent = data.message + (data.detail ? `: ${data.detail}` : '');
@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({ email, password })
                 });
                 const loginData = await loginRes.json();
-                localStorage.setItem('Thai Ship Pro_token', loginData.token);
-                localStorage.setItem('Thai Ship Pro_role', loginData.user.role);
+                localStorage.setItem('thaisppro_token', loginData.token);
+                localStorage.setItem('thaisppro_role', loginData.user.role);
                 window.location.href = 'dashboard.html';
             } else {
                 errorMsg.textContent = data.message + (data.detail ? `: ${data.detail}` : '');
@@ -273,8 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await res.json();
 
                 if (res.ok) {
-                    localStorage.setItem('Thai Ship Pro_token', data.token);
-                    localStorage.setItem('Thai Ship Pro_role', data.user.role);
+                    localStorage.setItem('thaisppro_token', data.token);
+                    localStorage.setItem('thaisppro_role', data.user.role);
                     window.location.href = 'dashboard.html';
                 } else {
                     trackingDetailSection.classList.remove('hidden');

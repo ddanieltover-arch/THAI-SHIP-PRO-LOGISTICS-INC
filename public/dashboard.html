@@ -148,7 +148,7 @@
     <nav class="navbar scrolled">
         <div class="nav-container">
                         <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                <img src="img/logo.png" alt="THAI SHIP PRO LOGISTICS INC" style="height: 48px; width: auto; object-fit: contain;">
+                <img src="/img/logo.png" alt="THAI SHIP PRO LOGISTICS INC" style="height: 48px; width: auto; object-fit: contain;">
                 <span style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em;">Thai Ship Pro Logistics</span>
             </a>
             <div class="nav-links">
@@ -258,15 +258,15 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            const token = localStorage.getItem('Thai Ship Pro_token');
+            const token = localStorage.getItem('thaisppro_token');
             if (!token) {
                 window.location.href = 'index.html';
                 return;
             }
 
             document.getElementById('logout-btn').addEventListener('click', () => {
-                localStorage.removeItem('Thai Ship Pro_token');
-                localStorage.removeItem('Thai Ship Pro_role');
+                localStorage.removeItem('thaisppro_token');
+                localStorage.removeItem('thaisppro_role');
                 window.location.href = 'index.html';
             });
 
@@ -337,7 +337,7 @@
             } catch (err) {
                 console.error(err);
                 if (err.message === 'Unauthorized') {
-                    localStorage.removeItem('Thai Ship Pro_token');
+                    localStorage.removeItem('thaisppro_token');
                     window.location.href = 'index.html';
                 } else {
                     const listContainer = document.getElementById('shipment-list');
