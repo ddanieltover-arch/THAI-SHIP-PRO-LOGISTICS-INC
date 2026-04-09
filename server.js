@@ -16,10 +16,10 @@ app.use(express.json());
 
 // Explicitly serve index.html for root path to prevent "Cannot GET /"
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.use(express.static(__dirname)); // Serve other frontend files (css, img, js) directly
+app.use(express.static(path.join(__dirname, 'public'))); // Serve frontend assets from public/ folder
 
 // === Keep-Alive / Health Endpoint ===
 app.get('/api/health', (req, res) => {
