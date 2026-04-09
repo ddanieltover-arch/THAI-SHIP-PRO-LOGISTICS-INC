@@ -59,7 +59,7 @@ async function geocodeLocation(q) {
             }
         }, 5000); // 5 second timeout for external API
 
-        https.get(url, { headers: { 'User-Agent': 'Thai Ship ProLogisticsApp/1.1' } }, (resp) => {
+        https.get(url, { headers: { 'User-Agent': 'ThaiProLogistics2018CoLtdApp/1.2' } }, (resp) => {
             let data = '';
             resp.on('data', (chunk) => { data += chunk; });
             resp.on('end', async () => {
@@ -149,18 +149,18 @@ async function sendSMS(to, body) {
 
 // === Reusable Email Template Builder ===
 function buildEmailTemplate(headerTitle, headerSubtitle, bodyContent) {
-    const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
+    const baseUrl = process.env.BASE_URL || 'https://thaisploginc.com';
     return `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
             <div style="background: linear-gradient(135deg, #CC0000 0%, #A30000 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
+                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 THAI PRO LOGISTICS 2018 CO., LTD</h1>
                 <p style="color: #ffebeb; margin: 8px 0 0;">${headerSubtitle}</p>
             </div>
             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
                 ${bodyContent}
                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
                     If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #CC0000;">Contact Page</a>.<br>
-                    Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
+                    Thank you for choosing <strong>Thai Pro Logistics 2018 Co., Ltd</strong>! 🚀
                 </p>
             </div>
         </div>
@@ -208,10 +208,10 @@ app.post('/api/auth/register', async (req, res) => {
             }
 
             // Send welcome email with credentials and security notice
-            const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
+            const baseUrl = process.env.BASE_URL || 'https://thaisploginc.com';
             const welcomeRegHtml = buildEmailTemplate('Welcome Aboard!', 'Your Account Has Been Created', `
                 <p style="font-size: 16px; color: #374151;">Hello <strong>${name}</strong>,</p>
-                <p style="color: #4b5563;">Welcome to <strong>Thai Ship Pro Logistics</strong>! Your account has been successfully created. Here are your login credentials:</p>
+                <p style="color: #4b5563;">Welcome to <strong>THAI PRO LOGISTICS 2018 CO., LTD</strong>! Your account has been successfully created. Here are your login credentials:</p>
                 
                 <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 25px; margin: 20px 0;">
                     <h3 style="margin: 0 0 15px; color: #CC0000; font-size: 16px; text-align: center;">🔑 Your Login Credentials</h3>
@@ -225,7 +225,7 @@ app.post('/api/auth/register', async (req, res) => {
                     <h3 style="margin: 0 0 10px; color: #CC0000; font-size: 15px;">🛡️ Security Notice</h3>
                     <ul style="margin: 0; padding-left: 18px; color: #991b1b; font-size: 14px; line-height: 1.8;">
                         <li><strong>Never share</strong> your login credentials with anyone.</li>
-                        <li>Thai Ship Pro Logistics will <strong>never ask</strong> for your password via email, phone, or chat.</li>
+                        <li>THAI PRO LOGISTICS 2018 CO., LTD will <strong>never ask</strong> for your password via email, phone, or chat.</li>
                         <li>We recommend changing your password after your first login.</li>
                         <li>If you suspect unauthorized access, reset your password immediately.</li>
                     </ul>
@@ -247,9 +247,9 @@ app.post('/api/auth/register', async (req, res) => {
             `);
 
             resend.emails.send({
-                from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+                from: process.env.EMAIL_FROM || 'THAI PRO LOGISTICS 2018 CO., LTD <info@thaisploginc.com>',
                 to: email,
-                subject: '🎉 Welcome to Thai Ship Pro Logistics — Your Account is Ready!',
+                subject: '🎉 Welcome to THAI PRO LOGISTICS 2018 CO., LTD — Your Account is Ready!',
                 html: welcomeRegHtml
             }).then(() => {
                 console.log(`✅ Welcome email sent to ${email}`);
@@ -303,7 +303,7 @@ app.post('/api/auth/forgot-password', (req, res) => {
 
             const resetHtml = buildEmailTemplate('Password Reset', 'Security Code Request', `
                 <p style="font-size: 16px; color: #374151;">Hello,</p>
-                <p style="color: #4b5563;">We received a request to reset the password associated with your Thai Ship Pro Logistics account.</p>
+                <p style="color: #4b5563;">We received a request to reset the password associated with your THAI PRO LOGISTICS 2018 CO., LTD account.</p>
                 
                 <div style="background: #fff5f5; border: 2px solid #CC0000; border-radius: 8px; padding: 25px; margin: 20px 0; text-align: center;">
                     <p style="margin: 0 0 5px; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Your Reset Code</p>
@@ -316,9 +316,9 @@ app.post('/api/auth/forgot-password', (req, res) => {
             `);
 
             resend.emails.send({
-                from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+                from: process.env.EMAIL_FROM || 'THAI PRO LOGISTICS 2018 CO., LTD <info@thaisploginc.com>',
                 to: email,
-                subject: '🔐 Password Reset Code - Thai Ship Pro Logistics',
+                subject: '🔐 Password Reset Code - THAI PRO LOGISTICS 2018 CO., LTD',
                 html: resetHtml
             }).catch(err => console.error("Forgot PWD email error:", err));
 
@@ -586,11 +586,11 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
 
                 // Send welcome email to the receiver with tracking info
                 if (user_email) {
-                    const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
+                    const baseUrl = process.env.BASE_URL || 'https://thaisploginc.com';
                     const welcomeHtml = `
                         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
                             <div style="background: linear-gradient(135deg, #CC0000 0%, #A30000 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
+                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Pro Logistics 2018</h1>
                                 <p style="color: #ffebeb; margin: 8px 0 0;">Your Shipment Has Been Created!</p>
                             </div>
                             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
@@ -632,16 +632,16 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
 
                                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
                                     If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #CC0000;">Contact Page</a>.<br>
-                                    Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
+                                    Thank you for choosing <strong>Thai Pro Logistics 2018</strong>! 🚀
                                 </p>
                             </div>
                         </div>
                     `;
 
                     resend.emails.send({
-                        from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+                        from: process.env.EMAIL_FROM || 'THAI PRO LOGISTICS 2018 CO., LTD <info@thaisploginc.com>',
                         to: user_email,
-                        subject: `Your Shipment ${trackingNumber} Has Been Created — Thai Ship Pro Logistics`,
+                        subject: `Your Shipment ${trackingNumber} Has Been Created — THAI PRO LOGISTICS 2018 CO., LTD`,
                         html: welcomeHtml
                     }).then(() => {
                         console.log(`✅ Welcome email sent for ${trackingNumber} to ${user_email}`);
@@ -652,11 +652,11 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
 
                 // Send confirmation email to the sender
                 if (sender_email) {
-                    const baseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
+                    const baseUrl = process.env.BASE_URL || 'https://thaisploginc.com';
                     const senderHtml = `
                         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff;">
                             <div style="background: linear-gradient(135deg, #CC0000 0%, #A30000 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Ship Pro Logistics</h1>
+                                <h1 style="color: #ffffff; margin: 0; font-size: 24px;">📦 Thai Pro Logistics 2018</h1>
                                 <p style="color: #ffebeb; margin: 8px 0 0;">Shipment Confirmation</p>
                             </div>
                             <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
@@ -689,16 +689,16 @@ app.post('/api/admin/shipments', authenticate, isAdmin, (req, res) => {
 
                                 <p style="color: #6b7280; font-size: 13px; margin-top: 25px; text-align: center; border-top: 1px solid #e5e7eb; padding-top: 15px;">
                                     If you have any questions, reply to this email or visit our <a href="${baseUrl}/contact.html" style="color: #CC0000;">Contact Page</a>.<br>
-                                    Thank you for choosing <strong>Thai Ship Pro Logistics</strong>! 🚀
+                                    Thank you for choosing <strong>Thai Pro Logistics 2018</strong>! 🚀
                                 </p>
                             </div>
                         </div>
                     `;
 
                     resend.emails.send({
-                        from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+                        from: process.env.EMAIL_FROM || 'THAI PRO LOGISTICS 2018 CO., LTD <info@thaisploginc.com>',
                         to: sender_email,
-                        subject: `Shipment Confirmation: ${trackingNumber} — Thai Ship Pro Logistics`,
+                        subject: `Shipment Confirmation: ${trackingNumber} — THAI PRO LOGISTICS 2018 CO., LTD`,
                         html: senderHtml
                     }).then(() => {
                         console.log(`✅ Sender confirmation email sent for ${trackingNumber} to ${sender_email}`);
@@ -788,7 +788,7 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
             const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`;
 
             const geocodePromise = new Promise((resolve) => {
-                https.get(url, { headers: { 'User-Agent': 'Thai Ship ProLogisticsApp/1.0' } }, (resp) => {
+                https.get(url, { headers: { 'User-Agent': 'ThaiProLogistics2018CoLtdApp/1.2' } }, (resp) => {
                     let data = '';
                     resp.on('data', (chunk) => { data += chunk; });
                     resp.on('end', () => {
@@ -859,7 +859,7 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
                         try {
                             const statusColor = status_marker === 'Delivered' ? '#22c55e' : (status_marker === 'In Transit' ? '#3b82f6' : '#f59e0b');
                             const statusIcon = status_marker === 'Delivered' ? '✅' : (status_marker === 'In Transit' ? '🚚' : '📋');
-                            const updateBaseUrl = process.env.BASE_URL || 'https://Thai Ship Prolog.com';
+                            const updateBaseUrl = process.env.BASE_URL || 'https://thaisploginc.com';
                             const updateHtml = buildEmailTemplate('Shipment Update', `${statusIcon} ${status_marker}`, `
                             <p style="font-size: 16px; color: #374151;">Hello <strong>${shipmentInfo.user_name || 'Valued Customer'}</strong>,</p>
                             <p style="color: #4b5563;">There's a new update on your shipment:</p>
@@ -884,7 +884,7 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
                             </div>
                         `);
                             const info = await resend.emails.send({
-                                from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+                                from: process.env.EMAIL_FROM || 'THAI PRO LOGISTICS 2018 CO., LTD <info@thaisploginc.com>',
                                 to: shipmentInfo.user_email,
                                 subject: `${statusIcon} Shipment Update: ${trackingNumber} — ${status_marker}`,
                                 html: updateHtml
@@ -897,11 +897,11 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
 
                     // SMS Notification
                     if (shipmentInfo && shipmentInfo.receiver_phone) {
-                        const smsBody = `📦 Thai Ship Pro Logistics\n\nShipment ${trackingNumber} Update:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n• Time: ${current_date_time || 'N/A'}\n\n${description || ''}\n\nTrack live: ${process.env.BASE_URL || 'https://Thai Ship Prolog.com'}`;
+                        const smsBody = `📦 THAI PRO LOGISTICS 2018\n\nShipment ${trackingNumber} Update:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n• Time: ${current_date_time || 'N/A'}\n\n${description || ''}\n\nTrack live: ${process.env.BASE_URL || 'https://thaisploginc.com'}`;
                         sendSMS(shipmentInfo.receiver_phone, smsBody);
                     }
                     if (shipmentInfo && shipmentInfo.sender_phone && shipmentInfo.sender_phone !== shipmentInfo.receiver_phone) {
-                        const senderSmsBody = `📦 Thai Ship Pro Logistics\n\nYour shipment ${trackingNumber} has been updated:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n\nTrack live: ${process.env.BASE_URL || 'https://Thai Ship Prolog.com'}`;
+                        const senderSmsBody = `📦 THAI PRO LOGISTICS 2018\n\nYour shipment ${trackingNumber} has been updated:\n• Status: ${status_marker}\n• Location: ${location || 'N/A'}\n\nTrack live: ${process.env.BASE_URL || 'https://thaisploginc.com'}`;
                         sendSMS(shipmentInfo.sender_phone, senderSmsBody);
                     }
                 });
@@ -1016,7 +1016,7 @@ app.post('/api/contact', async (req, res) => {
 
     const customerHtml = buildEmailTemplate('Message Received', 'We Got Your Message!', `
         <p style="font-size: 16px; color: #374151;">Hello <strong>${name}</strong>,</p>
-        <p style="color: #4b5563;">Thank you for reaching out to Thai Ship Pro Logistics! We've received your message and our team is reviewing it.</p>
+        <p style="color: #4b5563;">Thank you for reaching out to THAI PRO LOGISTICS 2018 CO., LTD! We've received your message and our team is reviewing it.</p>
         
         <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 18px; border-radius: 4px; margin: 20px 0;">
             <h3 style="margin: 0 0 8px; color: #166534; font-size: 15px;">⏱️ What Happens Next?</h3>
@@ -1031,7 +1031,7 @@ app.post('/api/contact', async (req, res) => {
 
     try {
         await resend.emails.send({
-            from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+            from: process.env.EMAIL_FROM || 'Thai Pro Logistics 2018 <info@thaisploginc.com>',
             to: process.env.EMAIL_USER || 'info@thaisploginc.com',
             replyTo: email,
             subject: `📬 New Contact Request from ${name}`,
@@ -1040,9 +1040,9 @@ app.post('/api/contact', async (req, res) => {
 
         // Send confirmation to the customer
         await resend.emails.send({
-            from: process.env.EMAIL_FROM || 'Thai Ship Pro Logistics <info@thaisploginc.com>',
+            from: process.env.EMAIL_FROM || 'Thai Pro Logistics 2018 <info@thaisploginc.com>',
             to: email,
-            subject: '✅ We received your message — Thai Ship Pro Logistics',
+            subject: '✅ We received your message — THAI PRO LOGISTICS 2018 CO., LTD',
             html: customerHtml
         });
 

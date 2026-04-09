@@ -1,5 +1,5 @@
 /**
- * Thai Ship Pro Logistics — Global Site Enhancements
+ * THAI PRO LOGISTICS 2018 CO., LTD — Global Site Enhancements
  * #2  Toast Notifications
  * #11 Smooth Page Transitions
  * #12 Dark Mode Toggle

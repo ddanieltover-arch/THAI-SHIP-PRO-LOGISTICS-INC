@@ -1,13 +1,13 @@
-/* === Core Variables === */
+﻿/* === Core Variables === */
 :root {
-    /* Colors - Thai Ship Pro Red & Deep Navy */
+    /* Colors - Thai Pro Logistics Red & Deep Navy */
     --clr-surface: #ffffff;
     --clr-surface-alt: #f1f5f9;
     --clr-text: #0f172a;
     --clr-text-muted: #64748b;
 
     --clr-primary: #CC0000;
-    /* Thai Ship Pro Red */
+    /* Thai Pro Logistics Red */
     --clr-primary-hover: #B00000;
 
     --clr-secondary: #001A5C;
@@ -115,7 +115,7 @@ svg {
 /* === Animated Contact Banner (Desktop Only) === */
 .marquee-banner {
     background: #CC0000;
-    /* Thai Ship Pro Red */
+    /* Thai Pro Logistics Red */
     color: white;
     padding: 0.6rem 0;
     overflow: hidden;

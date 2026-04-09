@@ -1,7 +1,7 @@
-{
+﻿{
   "name": "thai-ship-pro-logistics",
   "version": "1.0.0",
-  "description": "THAI SHIP PRO LOGISTICS INC - Global Transportation Services Platform",
+  "description": "THAI PRO LOGISTICS 2018 CO., LTD - Global Transportation Services Platform",
   "main": "server.js",
   "scripts": {
     "start": "node -r dotenv/config server.js",
