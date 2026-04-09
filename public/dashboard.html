@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -406,13 +406,26 @@
                 }).addTo(map);
             }
             
-            // Fix "Gray Map" issue by forcing multiple resizes while the container appears
+            // Fix "Gray Map" issue by forcing multiple resizes and using ResizeObserver
             const fixMap = () => {
-                map.invalidateSize();
-                // If the map is still missing tiles, center it properly
-                if (mapPolyline) map.fitBounds(mapPolyline.getBounds(), { padding: [50, 50] });
+                if (map) {
+                    map.invalidateSize();
+                    if (mapPolyline) {
+                        try {
+                            map.fitBounds(mapPolyline.getBounds(), { padding: [50, 50] });
+                        } catch(e) {}
+                    }
+                }
             };
             
+            // Re-invalidate when container size change (handles transitions/animations)
+            if (window.ResizeObserver) {
+                const resizeObserver = new ResizeObserver(() => {
+                    if (map) map.invalidateSize();
+                });
+                resizeObserver.observe(document.getElementById('dashboard-map'));
+            }
+
             setTimeout(fixMap, 100);
             setTimeout(fixMap, 500);
             setTimeout(fixMap, 1000);
@@ -502,26 +515,38 @@
 
                     timeline.innerHTML = htmlEvents.join('');
 
-                    // Draw Route - Live Connector Implementation
+                     // Draw Route - Live Connector Implementation
                     if (routeCoords.length > 1) {
-                        mapPolyline = L.polyline(routeCoords, {
-                            color: '#CC0000', 
-                            weight: 4, 
-                            opacity: 0.8,
-                            className: 'leaflet-ant-path' // Hooks into our CSS animation
-                        }).addTo(map);
-                        
-                        // Add a glow/shadow under the path for depth
-                        const glowPath = L.polyline(routeCoords, {
-                            color: '#CC0000',
-                            weight: 8,
-                            opacity: 0.2
-                        }).addTo(map);
-                        historicalMarkers.push(glowPath); // Add to cleanup list
-                        
-                        map.fitBounds(mapPolyline.getBounds(), { padding: [50, 50] });
+                         // Filter out duplicates and invalid coords just in case
+                        const cleanCoords = routeCoords.filter((c, i) => {
+                            if (i === 0) return true;
+                            return c[0] !== routeCoords[i-1][0] || c[1] !== routeCoords[i-1][1];
+                        });
+
+                        if (cleanCoords.length > 1) {
+                            mapPolyline = L.polyline(cleanCoords, {
+                                color: '#CC0000', 
+                                weight: 4, 
+                                opacity: 0.8,
+                                className: 'leaflet-ant-path' // Hooks into our CSS animation
+                            }).addTo(map);
+                            
+                            // Add a glow/shadow under the path for depth
+                            const glowPath = L.polyline(cleanCoords, {
+                                color: '#CC0000',
+                                weight: 8,
+                                opacity: 0.2
+                            }).addTo(map);
+                            historicalMarkers.push(glowPath); // Add to cleanup list
+                            
+                            try {
+                                map.fitBounds(mapPolyline.getBounds(), { padding: [50, 50] });
+                            } catch(e) {}
+                        }
                     } else if (routeCoords.length === 1) {
                         map.setView(routeCoords[0], 10);
+                        // If only one point, let's at least show it clearly
+                        map.invalidateSize();
                     }
 
                     // --- Animation Implementation (Defensive) ---

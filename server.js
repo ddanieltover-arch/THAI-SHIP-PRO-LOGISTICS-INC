@@ -46,6 +46,7 @@ app.get('/api/health', (req, res) => {
 // === Geocoding Helper & Proxy (Nominatim) ===
 async function geocodeLocation(q) {
     if (!q) return null;
+    console.log(`🔍 Geocoding request for: ${q}`);
     return new Promise((resolve) => {
         const https = require('https');
         const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=1`;
@@ -54,10 +55,10 @@ async function geocodeLocation(q) {
         const timer = setTimeout(() => {
             if (!resolved) {
                 resolved = true;
-                console.warn(`Geocode timeout for: ${q}`);
+                console.warn(`🕒 Geocode timeout (5s) for: ${q}`);
                 resolve(null);
             }
-        }, 5000); // 5 second timeout for external API
+        }, 5000);
 
         https.get(url, { headers: { 'User-Agent': 'ThaiProLogistics2018CoLtdApp/1.2' } }, (resp) => {
             let data = '';
@@ -69,8 +70,11 @@ async function geocodeLocation(q) {
                 try {
                     const parsed = JSON.parse(data);
                     if (parsed && parsed.length > 0) {
-                        resolve({ lat: parseFloat(parsed[0].lat), lon: parseFloat(parsed[0].lon) });
+                        const result = { lat: parseFloat(parsed[0].lat), lon: parseFloat(parsed[0].lon) };
+                        console.log(`📍 Geocode success: ${q} -> ${result.lat}, ${result.lon}`);
+                        resolve(result);
                     } else {
+                        console.warn(`❓ Geocode no results for: ${q}`);
                         // Smart Fallback Logic: City + Zip (USA) or City + Country (Intl)
                         const parts = q.split(',').map(s => s.trim());
                         if (parts.length > 2) {
@@ -83,18 +87,23 @@ async function geocodeLocation(q) {
                             }
 
                             if (fallbackQ && fallbackQ !== q) {
+                                console.log(`🔄 Attempting fallback geocode: ${fallbackQ}`);
                                 const fbResult = await geocodeLocation(fallbackQ);
                                 return resolve(fbResult);
                             }
                         }
                         resolve(null);
                     }
-                } catch (e) { resolve(null); }
+                } catch (e) { 
+                    console.error(`❌ Geocode parse error for ${q}:`, e.message);
+                    resolve(null); 
+                }
             });
-        }).on("error", () => {
+        }).on("error", (err) => {
             if (resolved) return;
             clearTimeout(timer);
             resolved = true;
+            console.error(`❌ Geocode network error for ${q}:`, err.message);
             resolve(null);
         });
     });
@@ -781,34 +790,16 @@ app.post('/api/admin/shipments/:trackingNumber/events', authenticate, isAdmin, a
     let current_lat = null;
     let current_lng = null;
 
-    // Auto-Geocoding via Nominatim
+    // Auto-Geocoding via Unified Helper
     if (location) {
         try {
-            const https = require('https');
-            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`;
-
-            const geocodePromise = new Promise((resolve) => {
-                https.get(url, { headers: { 'User-Agent': 'ThaiProLogistics2018CoLtdApp/1.2' } }, (resp) => {
-                    let data = '';
-                    resp.on('data', (chunk) => { data += chunk; });
-                    resp.on('end', () => {
-                        try {
-                            const parsed = JSON.parse(data);
-                            if (parsed && parsed.length > 0) {
-                                resolve({ lat: parseFloat(parsed[0].lat), lon: parseFloat(parsed[0].lon) });
-                            } else resolve(null);
-                        } catch (e) { resolve(null); }
-                    });
-                }).on("error", () => resolve(null));
-            });
-
-            const geoData = await geocodePromise;
+            const geoData = await geocodeLocation(location);
             if (geoData) {
                 current_lat = geoData.lat;
                 current_lng = geoData.lon;
             }
         } catch (e) {
-            console.error("Geocoding failed:", e);
+            console.error("Geocoding helper failed:", e);
         }
     }
 
